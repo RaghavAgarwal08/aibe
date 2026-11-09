@@ -375,6 +375,231 @@ const LINKS = {
     if (accent) requestAnimationFrame(() => accent.style.setProperty("--underline", "100%"));
   }
 
+
+  /* --------------------------------------------------------------- events */
+  // Reads AIBE_EVENTS from js/events.js. Splits upcoming from past against
+  // today, groups by month, and builds the filter set from the data.
+  function wireEvents() {
+    const root = $("[data-events]");
+    if (!root || typeof AIBE_EVENTS === "undefined") return;
+
+    const TYPES = typeof AIBE_EVENT_TYPES !== "undefined" ? AIBE_EVENT_TYPES : {};
+    const startOfToday = new Date(); startOfToday.setHours(0, 0, 0, 0);
+
+    const all = AIBE_EVENTS
+      .map((e) => {
+        const start = new Date(e.date + "T" + (e.start || "00:00") + ":00");
+        const end = e.end ? new Date(e.date + "T" + e.end + ":00") : null;
+        return Object.assign({}, e, { _start: start, _end: end });
+      })
+      .filter((e) => !isNaN(e._start))
+      .sort((a, b) => a._start - b._start);
+
+    const upcoming = all.filter((e) => (e._end || e._start) >= startOfToday);
+    const past = all.filter((e) => (e._end || e._start) < startOfToday).reverse();
+
+    const fmtDay   = (d) => d.toLocaleDateString("en-US", { weekday: "short" });
+    const fmtMon   = (d) => d.toLocaleDateString("en-US", { month: "short" });
+    const fmtMonth = (d) => d.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+    const fmtTime  = (d) => d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })
+                             .replace(":00", "").replace(" ", "\u202f");
+    const timeRange = (e) => e._end ? fmtTime(e._start) + "\u2013" + fmtTime(e._end) : fmtTime(e._start);
+    const typeLabel = (t) => (TYPES[t] && TYPES[t].label) || t;
+
+    const esc = (str) => String(str == null ? "" : str)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+    /* ---- iCalendar ---- */
+    const pad = (n) => String(n).padStart(2, "0");
+    // Floating local time: calendar apps show it at the stated wall-clock time,
+    // which is what you want for an event in one room on one campus.
+    const ical = (d) => d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) +
+                        "T" + pad(d.getHours()) + pad(d.getMinutes()) + "00";
+    const icalUTC = (d) => d.getUTCFullYear() + pad(d.getUTCMonth() + 1) + pad(d.getUTCDate()) +
+                        "T" + pad(d.getUTCHours()) + pad(d.getUTCMinutes()) + pad(d.getUTCSeconds()) + "Z";
+    const fold = (line) => {
+      const out = [];
+      while (line.length > 72) { out.push(line.slice(0, 72)); line = " " + line.slice(72); }
+      out.push(line);
+      return out.join("\r\n");
+    };
+    const icalText = (str) => String(str || "")
+      .replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
+
+    function vevent(e, i) {
+      const end = e._end || new Date(e._start.getTime() + 90 * 60000);
+      return [
+        "BEGIN:VEVENT",
+        fold("UID:aibe-" + e.date + "-" + i + "@aibe.illinois"),
+        "DTSTAMP:" + icalUTC(new Date()),
+        "DTSTART:" + ical(e._start),
+        "DTEND:" + ical(end),
+        fold("SUMMARY:" + icalText("AIBE \u00b7 " + e.title)),
+        fold("DESCRIPTION:" + icalText(e.blurb)),
+        fold("LOCATION:" + icalText(e.location || "")),
+        "END:VEVENT"
+      ].join("\r\n");
+    }
+
+    function download(events, filename) {
+      const body = ["BEGIN:VCALENDAR", "VERSION:2.0", "CALSCALE:GREGORIAN",
+                    "PRODID:-//AIBE at Illinois//Events//EN"]
+        .concat(events.map(vevent)).concat(["END:VCALENDAR"]).join("\r\n");
+      const url = URL.createObjectURL(new Blob([body], { type: "text/calendar;charset=utf-8" }));
+      const a = document.createElement("a");
+      a.href = url; a.download = filename;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    /* ---- markup ---- */
+    function eventRow(e, idx) {
+      const link = e.link
+        ? '<a class="btn btn--ghost btn--sm" href="' + esc(e.link) + '" target="_blank" rel="noopener">Sign up</a>'
+        : "";
+      return '' +
+        '<li class="ev" data-type="' + esc(e.type) + '">' +
+          '<div class="ev__date" aria-hidden="true">' +
+            '<span class="ev__mon">' + fmtMon(e._start) + '</span>' +
+            '<span class="ev__num">' + e._start.getDate() + '</span>' +
+            '<span class="ev__dow">' + fmtDay(e._start) + '</span>' +
+          '</div>' +
+          '<div class="ev__body">' +
+            '<p class="ev__tag">' + esc(typeLabel(e.type)) + '</p>' +
+            '<h3 class="ev__title">' + esc(e.title) + '</h3>' +
+            '<p class="ev__meta">' +
+              '<span class="sr-only">' + e._start.toDateString() + ', </span>' +
+              timeRange(e) + ' &middot; ' + esc(e.location || "Location TBA") +
+            '</p>' +
+            (e.blurb ? '<p class="ev__blurb">' + esc(e.blurb) + '</p>' : "") +
+            '<div class="ev__actions">' +
+              '<button class="btn btn--ghost btn--sm" type="button" data-ics="' + idx + '">' +
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>' +
+                'Add to calendar</button>' +
+              link +
+            '</div>' +
+          '</div>' +
+        '</li>';
+    }
+
+    function renderList(target, list, emptyMsg) {
+      if (!target) return;
+      if (!list.length) {
+        target.innerHTML = '<p class="ev-empty">' + emptyMsg + '</p>';
+        return;
+      }
+      let html = "", month = "";
+      list.forEach((e) => {
+        const m = fmtMonth(e._start);
+        if (m !== month) {
+          if (month) html += "</ul>";
+          html += '<h3 class="ev-month">' + m + "</h3><ul class=\"ev-list\">";
+          month = m;
+        }
+        html += eventRow(e, all.indexOf(e));
+      });
+      html += "</ul>";
+      target.innerHTML = html;
+    }
+
+    renderList($("[data-events-upcoming]"), upcoming,
+      "Nothing on the calendar right now. The next semester's slate goes up before classes start \u2014 Discord gets it first.");
+    renderList($("[data-events-past]"), past,
+      "Nothing has happened yet. Check back once the semester is under way.");
+
+    /* ---- next up ---- */
+    const nextBox = $("[data-events-next]");
+    if (nextBox) {
+      if (upcoming.length) {
+        const e = upcoming[0];
+        const days = Math.round((new Date(e._start).setHours(0, 0, 0, 0) - startOfToday) / 86400000);
+        const when = days === 0 ? "Today" : days === 1 ? "Tomorrow" :
+                     days < 7 ? "In " + days + " days" :
+                     e._start.toLocaleDateString("en-US", { month: "long", day: "numeric" });
+        nextBox.innerHTML =
+          '<p class="eyebrow" style="color:var(--teal-bright)">Next up &middot; ' + esc(when) + '</p>' +
+          '<h2 class="t-h2" style="color:#fff;max-width:20ch">' + esc(e.title) + '</h2>' +
+          '<p class="t-lead" style="color:#C2D4EA;margin-top:16px;max-width:52ch">' + esc(e.blurb || "") + '</p>' +
+          '<p class="next__when">' +
+            esc(e._start.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })) +
+            ' &middot; ' + timeRange(e) + ' &middot; ' + esc(e.location || "Location TBA") + '</p>' +
+          '<div class="btn-row" style="margin-top:26px">' +
+            '<button class="btn btn--primary" type="button" data-ics="' + all.indexOf(e) + '">Add to calendar</button>' +
+            '<a class="btn btn--ghost" href="#upcoming">See the whole semester</a>' +
+          '</div>';
+      } else {
+        nextBox.innerHTML =
+          '<p class="eyebrow" style="color:var(--teal-bright)">Next up</p>' +
+          '<h2 class="t-h2" style="color:#fff;max-width:20ch">Nothing scheduled yet.</h2>' +
+          '<p class="t-lead" style="color:#C2D4EA;margin-top:16px;max-width:50ch">The slate for next semester goes up before classes start. Discord gets it first.</p>' +
+          '<div class="btn-row" style="margin-top:26px"><a class="btn btn--discord" data-link="discord">Join our Discord</a></div>';
+        wireLinks();
+      }
+    }
+
+    /* ---- filters ---- */
+    const bar = $("[data-events-filters]");
+    if (bar && upcoming.length) {
+      const present = [];
+      upcoming.forEach((e) => { if (present.indexOf(e.type) < 0) present.push(e.type); });
+      bar.innerHTML = '<button class="chip" type="button" data-filter="all" aria-pressed="true">Everything</button>' +
+        present.map((t) =>
+          '<button class="chip" type="button" data-filter="' + esc(t) + '" aria-pressed="false">' +
+          esc((TYPES[t] && TYPES[t].short) || typeLabel(t)) + "</button>").join("");
+
+      bar.addEventListener("click", (ev) => {
+        const btn = ev.target.closest("[data-filter]");
+        if (!btn) return;
+        const want = btn.dataset.filter;
+        $$(".chip", bar).forEach((c) => c.setAttribute("aria-pressed", String(c === btn)));
+        const scope = $("[data-events-upcoming]");
+        $$(".ev", scope).forEach((li) => {
+          li.hidden = !(want === "all" || li.dataset.type === want);
+        });
+        // A month heading with nothing left under it goes too.
+        $$(".ev-month", scope).forEach((h) => {
+          const ul = h.nextElementSibling;
+          h.hidden = !ul || !$$(".ev", ul).some((li) => !li.hidden);
+          if (ul) ul.hidden = h.hidden;
+        });
+        const shown = $$(".ev", scope).filter((li) => !li.hidden).length;
+        const note = $("[data-events-count]");
+        if (note) note.textContent = shown === upcoming.length
+          ? upcoming.length + " events scheduled"
+          : shown + " of " + upcoming.length + " events";
+      });
+    }
+
+    const count = $("[data-events-count]");
+    if (count) count.textContent = upcoming.length
+      ? upcoming.length + " events scheduled"
+      : "Calendar coming soon";
+
+    /* ---- add-to-calendar buttons ---- */
+    root.addEventListener("click", (ev) => {
+      const btn = ev.target.closest("[data-ics]");
+      if (!btn) return;
+      const e = all[parseInt(btn.dataset.ics, 10)];
+      if (!e) return;
+      download([e], "aibe-" + e.date + ".ics");
+      const was = btn.innerHTML;
+      btn.innerHTML = "Downloaded \u2713";
+      setTimeout(() => { btn.innerHTML = was; }, 2200);
+    });
+
+    const allBtn = $("[data-ics-all]");
+    if (allBtn) {
+      if (!upcoming.length) { allBtn.setAttribute("aria-disabled", "true"); }
+      else allBtn.addEventListener("click", () => download(upcoming, "aibe-calendar.ics"));
+    }
+
+    /* ---- draft notice ---- */
+    if (typeof AIBE_DRAFT !== "undefined" && !AIBE_DRAFT) {
+      const d = $("[data-events-draft]");
+      if (d) d.remove();
+    }
+  }
+
   /* ----------------------------------------------------------------- year */
   function wireYear() {
     $$("[data-year]").forEach((el) => { el.textContent = new Date().getFullYear(); });
@@ -382,6 +607,6 @@ const LINKS = {
 
   document.addEventListener("DOMContentLoaded", () => {
     wireLinks(); wireNav(); wireReveal(); wireSpine();
-    wireCounters(); wireHero(); wireYear();
+    wireCounters(); wireHero(); wireEvents(); wireYear();
   });
 })();

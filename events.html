@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Events — AIBE at Illinois</title>
+  <meta name="description" content="The AIBE calendar at the University of Illinois: weekly AI workshops, founder firesides, hackathons, socials and demo day. Add any event to your own calendar.">
+  <meta name="theme-color" content="#02162E">
+  <meta property="og:title" content="Events — AIBE at Illinois">
+  <meta property="og:description" content="The AIBE calendar at the University of Illinois: weekly AI workshops, founder firesides, hackathons, socials and demo day. Add any event to your own calendar.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/logo-lockup.png">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="css/aibe.css">
+  <script src="js/events.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav nav--over" id="nav">
+    <div class="nav__in">
+      <a class="nav__logo" href="index.html" aria-label="AIBE — home">
+        <img class="lg-dark" src="assets/logo-mark.png" alt="" width="54" height="38">
+        <img class="lg-light" src="assets/logo-mark-light.png" alt="" width="54" height="38">
+        <span>
+          <span class="nav__logo-text">AIBE</span>
+          <span class="nav__logo-sub">Illinois</span>
+        </span>
+      </a>
+      <button class="nav__burger" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+        <span></span>
+      </button>
+      <nav class="nav__links" id="nav-links" aria-label="Main">
+          <a class="nav__link" href="index.html">Home</a>
+          <a class="nav__link" href="about.html">About</a>
+          <a class="nav__link" href="programs.html">Programs</a>
+          <a class="nav__link" href="events.html" aria-current="page">Events</a>
+          <a class="nav__link" href="team.html">Team</a>
+          <a class="nav__link" href="join.html">Join</a>
+        <a class="btn btn--primary btn--sm nav__cta" href="join.html">Join AIBE</a>
+      </nav>
+    </div>
+  </header>
+
+  <nav class="spine" aria-label="Sections on this page">
+    <div class="spine__rail"><div class="spine__fill"></div></div>
+    <ul class="spine__list"></ul>
+  </nav>
+
+  <main id="main" data-events>
+
+  <section class="hero hero--short" data-spine="Top">
+    <div class="hero__media" aria-hidden="true"><canvas></canvas></div>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap wrap--wide hero__inner">
+      <p class="eyebrow" style="color:var(--teal-bright)">Calendar</p>
+      <h1 class="t-h1" style="color:#fff;max-width:14ch">What's on, and when.</h1>
+      <p class="hero__sub">Every workshop, talk, hackathon and social, in one place. Add any of them to your own calendar in one click.</p>
+      <div class="btn-row hero__actions">
+        <button class="btn btn--primary" type="button" data-ics-all><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> Add the whole semester</button>
+        <a class="btn btn--discord" data-link="discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.27 5.33A16.6 16.6 0 0 0 15.1 4l-.2.37a15.2 15.2 0 0 1 3.6 1.2 13.1 13.1 0 0 0-11-.0 15.2 15.2 0 0 1 3.6-1.2L10.9 4a16.6 16.6 0 0 0-4.17 1.33C3.6 9.9 2.78 14.33 3.2 18.7a16.7 16.7 0 0 0 5.07 2.57l1.1-1.52a10.9 10.9 0 0 1-1.73-.83l.43-.32a11.9 11.9 0 0 0 10.2 0l.43.32c-.55.32-1.13.6-1.73.83l1.1 1.52a16.7 16.7 0 0 0 5.07-2.57c.5-5.06-.84-9.45-3.87-13.37ZM9.68 15.9c-.99 0-1.8-.9-1.8-2.01 0-1.1.79-2.01 1.8-2.01s1.82.91 1.8 2.01c0 1.1-.8 2.01-1.8 2.01Zm6.64 0c-.99 0-1.8-.9-1.8-2.01 0-1.1.79-2.01 1.8-2.01s1.81.91 1.8 2.01c0 1.1-.79 2.01-1.8 2.01Z"/></svg> Changes land on Discord first</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NEXT UP ===================== -->
+  <section class="band band--tight" id="next" data-spine="Next up">
+    <div class="wrap">
+      <div class="next" data-events-next data-reveal="scale">
+        <!-- filled by wireEvents() -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== UPCOMING ===================== -->
+  <section class="band" id="upcoming" data-spine="Upcoming">
+    <div class="wrap">
+      <div style="max-width:640px;margin-bottom:clamp(26px,3vw,40px)" data-reveal>
+        <p class="eyebrow">Upcoming</p>
+        <h2 class="t-h2">The semester, start to finish.</h2>
+      </div>
+
+      <div class="ev-draft" data-events-draft data-reveal>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.6v.4"/></svg>
+        <span><strong>Draft schedule.</strong> Dates are planned, rooms are not booked yet, and speakers are still being confirmed. Everything here can move &mdash; the Discord has the version we actually trust.</span>
+      </div>
+
+      <div class="ev-bar" data-reveal>
+        <div class="ev-chips" data-events-filters role="group" aria-label="Filter events by type"></div>
+        <p class="ev-count" data-events-count aria-live="polite"></p>
+      </div>
+
+      <div data-events-upcoming data-reveal></div>
+    </div>
+  </section>
+
+  <!-- ===================== RHYTHM ===================== -->
+  <section class="band band--ink band--tight" id="rhythm" data-spine="The rhythm">
+    <div class="wrap">
+      <div style="max-width:620px;margin-bottom:clamp(26px,3vw,38px)" data-reveal>
+        <p class="eyebrow">If you only remember one thing</p>
+        <h2 class="t-h2">The weekly rhythm.</h2>
+      </div>
+      <dl class="rhythm" data-reveal>
+        <div>
+          <dt>Every week</dt>
+          <dd><strong>Workshop</strong>Thursday evenings during the semester. Ninety minutes, laptops open, one skill. This is the meeting to come to if you come to one.</dd>
+        </div>
+        <div>
+          <dt>Every month</dt>
+          <dd><strong>Speaker or social</strong>A fireside, a panel, or a night that exists purely so teams find each other.</dd>
+        </div>
+        <div>
+          <dt>Twice a semester</dt>
+          <dd><strong>Hackathon</strong>A full Saturday, food and credits provided, ending in pitches.</dd>
+        </div>
+      </dl>
+      <p class="t-small" style="margin-top:22px;color:var(--text-3)">Executive Board meetings run separately and are not listed here. Officers, check Discord.</p>
+    </div>
+  </section>
+
+  <!-- ===================== PAST ===================== -->
+  <section class="band" id="past" data-spine="Past">
+    <div class="wrap">
+      <div style="max-width:640px;margin-bottom:clamp(22px,2.6vw,34px)" data-reveal>
+        <p class="eyebrow">Archive</p>
+        <h2 class="t-h2">Already happened.</h2>
+      </div>
+      <div data-events-past data-reveal></div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="band band--tight" id="stay" data-spine="Stay posted">
+    <div class="wrap">
+      <div class="callout" data-reveal="scale">
+        <img class="callout__mark" src="assets/logo-mark-light.png" alt="" aria-hidden="true" width="300" height="214">
+        <p class="eyebrow" style="color:var(--teal-bright)">Don't miss one</p>
+        <h2 class="t-h1" style="max-width:16ch">Rooms change. Discord doesn't.</h2>
+        <p class="t-lead" style="color:#C2D4EA;margin-top:22px;max-width:54ch">This page is the plan. The Discord is where a room change at 4&nbsp;pm actually reaches you, and where the week's workshop gets posted with whatever you need to bring.</p>
+        <div class="btn-row" style="margin-top:32px">
+          <a class="btn btn--discord" data-link="discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.27 5.33A16.6 16.6 0 0 0 15.1 4l-.2.37a15.2 15.2 0 0 1 3.6 1.2 13.1 13.1 0 0 0-11-.0 15.2 15.2 0 0 1 3.6-1.2L10.9 4a16.6 16.6 0 0 0-4.17 1.33C3.6 9.9 2.78 14.33 3.2 18.7a16.7 16.7 0 0 0 5.07 2.57l1.1-1.52a10.9 10.9 0 0 1-1.73-.83l.43-.32a11.9 11.9 0 0 0 10.2 0l.43.32c-.55.32-1.13.6-1.73.83l1.1 1.52a16.7 16.7 0 0 0 5.07-2.57c.5-5.06-.84-9.45-3.87-13.37ZM9.68 15.9c-.99 0-1.8-.9-1.8-2.01 0-1.1.79-2.01 1.8-2.01s1.82.91 1.8 2.01c0 1.1-.8 2.01-1.8 2.01Zm6.64 0c-.99 0-1.8-.9-1.8-2.01 0-1.1.79-2.01 1.8-2.01s1.81.91 1.8 2.01c0 1.1-.79 2.01-1.8 2.01Z"/></svg> Join our Discord</a>
+          <a class="btn btn--primary" href="join.html">Join AIBE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn--ghost" href="programs.html">What each event is</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main>
+<footer class="foot">
+    <div class="wrap wrap--wide">
+      <div class="foot__grid">
+        <div class="foot__logo">
+          <img src="assets/logo-lockup-light.png" alt="AIBE — AI for Business &amp; Entrepreneurship" width="240" height="67">
+          <p style="color:#A3B8D2;font-size:.97rem;max-width:34ch">A student-led community at the University of Illinois Urbana-Champaign for building businesses with AI.</p>
+          <div class="social" style="margin-top:20px">
+            <a data-link="discord" aria-label="AIBE on Discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.27 5.33A16.6 16.6 0 0 0 15.1 4l-.2.37a15.2 15.2 0 0 1 3.6 1.2 13.1 13.1 0 0 0-11-.0 15.2 15.2 0 0 1 3.6-1.2L10.9 4a16.6 16.6 0 0 0-4.17 1.33C3.6 9.9 2.78 14.33 3.2 18.7a16.7 16.7 0 0 0 5.07 2.57l1.1-1.52a10.9 10.9 0 0 1-1.73-.83l.43-.32a11.9 11.9 0 0 0 10.2 0l.43.32c-.55.32-1.13.6-1.73.83l1.1 1.52a16.7 16.7 0 0 0 5.07-2.57c.5-5.06-.84-9.45-3.87-13.37ZM9.68 15.9c-.99 0-1.8-.9-1.8-2.01 0-1.1.79-2.01 1.8-2.01s1.82.91 1.8 2.01c0 1.1-.8 2.01-1.8 2.01Zm6.64 0c-.99 0-1.8-.9-1.8-2.01 0-1.1.79-2.01 1.8-2.01s1.81.91 1.8 2.01c0 1.1-.79 2.01-1.8 2.01Z"/></svg></a>
+            <a data-link="instagram" aria-label="AIBE on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+            <a data-link="email" aria-label="Email AIBE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="events.html">Events calendar</a></li>
+            <li><a href="team.html">Executive board</a></li>
+            <li><a href="join.html">Join AIBE</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get involved</h4>
+          <ul>
+            <li><a data-link="joinForm">Interest form</a></li>
+            <li><a data-link="discord">Discord server</a></li>
+            <li><a href="programs.html#projects">Project teams</a></li>
+            <li><a href="join.html#officers">Officer roles</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a data-link="email" data-link-text="email">email</a></li>
+            <li>Urbana&ndash;Champaign, IL</li>
+            <li><a data-link="rso">Illinois Connection</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot__bottom">
+        <span>&copy; <span data-year>2026</span> AI for Business &amp; Entrepreneurship at UIUC. A Registered Student Organization.</span>
+        <span>AIBE is a separate legal entity from the University of Illinois.</span>
+      </div>
+    </div>
+  </footer>
+  <script src="js/aibe.js"></script>
+</body>
+</html>

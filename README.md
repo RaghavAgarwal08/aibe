@@ -8,10 +8,12 @@ one script.
 index.html      Home
 about.html      About us
 programs.html   Workshops, project teams, hackathons, speakers
+events.html     The calendar
 team.html       Executive board (placeholders)
 join.html       How to join + FAQ
 css/aibe.css    Design system (all colors, type and layout tokens)
-js/aibe.js      Links config, scroll animations, hero animation
+js/aibe.js      Links config, scroll animations, hero animation, calendar
+js/events.js    THE CALENDAR DATA — the file you edit most often
 assets/         Logos generated from the brand sheet
 ```
 
@@ -34,11 +36,46 @@ Every Discord button, Instagram icon and interest-form link on every page reads 
 this one object. A link left empty renders as a disabled button labelled
 "Link coming soon" — nothing breaks.
 
-## 2. Team photos and names
+## 2. The calendar
+
+Everything on the Events page comes from **`js/events.js`**. You never touch
+`events.html`.
+
+Each event is one block:
+
+```js
+{
+  date: "2027-02-04",   // YYYY-MM-DD
+  start: "18:00",       // 24-hour
+  end: "19:30",         // optional
+  type: "workshop",     // workshop | speaker | hackathon | social | demo | info | trip
+  title: "Mining Reddit for real customer pain",
+  location: "Siebel 1404",
+  blurb: "One or two sentences on what happens.",
+  link: ""              // optional RSVP / signup URL
+}
+```
+
+The page does the rest on its own:
+
+- sorts by date, and splits upcoming from past against today
+- groups by month and builds the filter chips from whatever types it finds
+- picks the soonest event for the "Next up" card
+- generates a downloadable `.ics` per event, and one for the whole semester
+
+**The schedule that ships is a draft** built from the events plan — plausible
+dates, every room marked TBA. While `AIBE_DRAFT = true` at the top of the file,
+the page shows a "draft schedule" notice. Set it to `false` once dates and rooms
+are real and the notice disappears.
+
+Adding a new type of event: add it to `AIBE_EVENT_TYPES` at the bottom of the
+file first, then use its key in an event.
+
+## 3. Team photos and names
 
 See `assets/team/README.md`.
 
-## 3. Hero video
+## 4. Hero video
 
 The home page hero runs a generated animation built from the logo's trajectory motif
 (the rising line and nodes from the mark, drawn live on a canvas).
@@ -56,14 +93,14 @@ Aim for: 10–20 s silent loop, 1920×1080, H.264, under ~6 MB. Darker, slower f
 works best because text sits on top of it. Free sources: Pexels Videos, Coverr,
 Mixkit. Avoid anything with people's faces you don't have permission for.
 
-## 4b. Social preview images
+## 5. Social preview images
 
 `og:image` is currently a relative path, which most social platforms won't resolve.
 Once the site has a real URL, change the two `og:` tags at the top of each page to the
 full address, e.g.
 `<meta property="og:image" content="https://raghavagarwal08.github.io/aibe/assets/logo-lockup.png">`.
 
-## 4. Publishing to GitHub Pages
+## 6. Publishing to GitHub Pages
 
 The contents of this folder are the site root.
 
@@ -91,7 +128,7 @@ Buy a domain, add a file called `CNAME` in this folder containing just the domai
 (e.g. `aibe.illinois.community`), point a CNAME DNS record at
 `raghavagarwal08.github.io`, and set the domain under Settings → Pages.
 
-## 5. Previewing locally
+## 7. Previewing locally
 
 ```bash
 cd site && python3 -m http.server 8000
