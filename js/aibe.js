@@ -190,10 +190,13 @@ const LINKS = {
   // Used on its own, or as the backdrop until assets/hero.mp4 is available.
   function heroCanvas(canvas) {
     const ctx = canvas.getContext("2d");
-    let w = 0, h = 0, dpr = 1, raf = 0, nodes = [], bars = [], running = false;
+    let w = 0, h = 0, dpr = 1, raf = 0, running = false;
+    let nodes = [], bars = [];
+    let mx = 0, my = 0, cx = 0, cy = 0;     // pointer parallax, smoothed
+    let scrollPush = 0;
 
     const NAVY = "#02162E";
-    const TEAL = [79, 209, 178];
+    const FOV = 760;                         // focal length for the projection
 
     function resize() {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -205,122 +208,142 @@ const LINKS = {
     }
 
     function build() {
-      const density = Math.round((w * h) / 26000);
-      const count = Math.max(26, Math.min(88, density));
+      // A cloud of points in real 3D space, weighted to the right of frame so
+      // the headline on the left stays clear.
+      const count = Math.max(55, Math.min(150, Math.round((w * h) / 13000)));
       nodes = [];
       for (let i = 0; i < count; i++) {
         nodes.push({
-          x: Math.random() * w,
-          y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 0.14,
-          vy: (Math.random() - 0.5) * 0.14,
-          r: Math.random() * 1.7 + 0.8,
-          a: Math.random() * 0.45 + 0.28
+          x: (Math.random() - 0.26) * w * 1.5,
+          y: (Math.random() - 0.5) * h * 1.35,
+          z: Math.random() * 1500 + 90,
+          vx: (Math.random() - 0.5) * 0.09,
+          vy: (Math.random() - 0.5) * 0.09,
+          vz: -(Math.random() * 0.26 + 0.08),
+          r: Math.random() * 1.5 + 0.9
         });
       }
-      // Rising bars — the chart inside the mark. Kept to the open right half,
-      // where the hero scrim is lightest and no copy sits on top of them.
       bars = [];
-      const bw = Math.max(26, w * 0.03);
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 6; i++) {
         bars.push({
-          x: w * 0.6 + i * bw * 1.9,
-          base: h * (0.2 + i * 0.1),
-          amp: h * 0.035,
-          phase: i * 0.9
+          x: w * 0.56 + i * Math.max(26, w * 0.032) * 1.85,
+          z: 300 + i * 70,
+          base: h * (0.18 + i * 0.085),
+          amp: h * 0.03,
+          phase: i * 0.85
         });
       }
     }
 
+    // World point -> screen, with the camera nudged by pointer and scroll.
+    function project(x, y, z) {
+      const zz = z - scrollPush;
+      if (zz < 24) return null;
+      const k = FOV / zz;
+      return {
+        x: w / 2 + (x - cx * 140) * k,
+        y: h / 2 + (y - cy * 110) * k,
+        k: k
+      };
+    }
+
     function frame(t) {
       const time = t * 0.001;
+      cx += (mx - cx) * 0.045;
+      cy += (my - cy) * 0.045;
+
       ctx.fillStyle = NAVY;
       ctx.fillRect(0, 0, w, h);
 
-      // glow
-      const g = ctx.createRadialGradient(w * 0.78, h * 0.78, 0, w * 0.78, h * 0.78, Math.max(w, h) * 0.7);
-      g.addColorStop(0, "rgba(18,134,115,.46)");
-      g.addColorStop(0.5, "rgba(12,74,96,.18)");
+      const g = ctx.createRadialGradient(w * 0.76, h * 0.72, 0, w * 0.76, h * 0.72, Math.max(w, h) * 0.72);
+      g.addColorStop(0, "rgba(18,134,115,.42)");
+      g.addColorStop(0.5, "rgba(12,74,96,.16)");
       g.addColorStop(1, "rgba(2,22,46,0)");
-      ctx.fillStyle = g;
-      ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
 
-      const g2 = ctx.createRadialGradient(w * 0.62, h * 0.08, 0, w * 0.62, h * 0.08, Math.max(w, h) * 0.6);
-      g2.addColorStop(0, "rgba(30,96,158,.34)");
+      const g2 = ctx.createRadialGradient(w * 0.6, h * 0.05, 0, w * 0.6, h * 0.05, Math.max(w, h) * 0.6);
+      g2.addColorStop(0, "rgba(30,96,158,.3)");
       g2.addColorStop(1, "rgba(2,22,46,0)");
-      ctx.fillStyle = g2;
-      ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = g2; ctx.fillRect(0, 0, w, h);
 
-      // bars
+      // Bars, drawn in perspective so they recede with the cloud.
       bars.forEach((b, i) => {
         const hgt = b.base + Math.sin(time * 0.55 + b.phase) * b.amp;
-        const grad = ctx.createLinearGradient(0, h, 0, h - hgt);
-        grad.addColorStop(0, "rgba(18,134,115,0)");
-        grad.addColorStop(1, "rgba(79,209,178," + (0.16 + i * 0.03) + ")");
+        const top = project(b.x - w / 2, h / 2 - hgt, b.z);
+        const bot = project(b.x - w / 2, h / 2, b.z);
+        if (!top || !bot) return;
+        const bw = Math.max(20, w * 0.026) * bot.k;
+        const grad = ctx.createLinearGradient(0, bot.y, 0, top.y);
+        grad.addColorStop(0, "rgba(79,209,178,0)");
+        grad.addColorStop(1, "rgba(79,209,178," + (0.17 + i * 0.028) + ")");
         ctx.fillStyle = grad;
-        const bw = Math.max(22, w * 0.024);
         ctx.beginPath();
-        ctx.roundRect(b.x, h - hgt, bw, hgt, [bw * 0.3, bw * 0.3, 0, 0]);
+        ctx.roundRect(top.x - bw / 2, top.y, bw, Math.max(0, bot.y - top.y), [bw * 0.3, bw * 0.3, 0, 0]);
         ctx.fill();
       });
 
-      // network
+      // Advance and project the cloud.
+      const proj = [];
       for (const n of nodes) {
-        n.x += n.vx; n.y += n.vy;
-        if (n.x < -40) n.x = w + 40; if (n.x > w + 40) n.x = -40;
-        if (n.y < -40) n.y = h + 40; if (n.y > h + 40) n.y = -40;
-      }
-      const maxD = Math.min(190, Math.max(110, w * 0.11));
-      ctx.lineWidth = 1;
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
-          const d2 = dx * dx + dy * dy;
-          if (d2 > maxD * maxD) continue;
-          const o = (1 - Math.sqrt(d2) / maxD) * 0.28;
-          ctx.strokeStyle = "rgba(" + TEAL[0] + "," + TEAL[1] + "," + TEAL[2] + "," + o + ")";
-          ctx.beginPath();
-          ctx.moveTo(nodes[i].x, nodes[i].y);
-          ctx.lineTo(nodes[j].x, nodes[j].y);
-          ctx.stroke();
+        n.x += n.vx; n.y += n.vy; n.z += n.vz;
+        if (n.z < 70) { n.z = 1600; n.x = (Math.random() - 0.26) * w * 1.5; n.y = (Math.random() - 0.5) * h * 1.35; }
+        const p = project(n.x, n.y, n.z);
+        if (p && p.x > -120 && p.x < w + 120 && p.y > -120 && p.y < h + 120) {
+          proj.push({ x: p.x, y: p.y, s: n.r * p.k * 1.5, a: Math.min(0.85, p.k * 0.62), z: n.z });
         }
       }
-      for (const n of nodes) {
-        ctx.fillStyle = "rgba(" + TEAL[0] + "," + TEAL[1] + "," + TEAL[2] + "," + n.a + ")";
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-        ctx.fill();
+
+      // Link near neighbours; depth decides how solid the link looks.
+      const maxD = Math.min(170, Math.max(100, w * 0.1));
+      for (let i = 0; i < proj.length; i++) {
+        const a = proj[i];
+        for (let j = i + 1; j < proj.length; j++) {
+          const b = proj[j];
+          if (Math.abs(a.z - b.z) > 330) continue;
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const d2 = dx * dx + dy * dy;
+          if (d2 > maxD * maxD) continue;
+          const o = (1 - Math.sqrt(d2) / maxD) * 0.3 * Math.min(a.a, b.a) / 0.85;
+          if (o < 0.012) continue;
+          ctx.strokeStyle = "rgba(79,209,178," + o.toFixed(3) + ")";
+          ctx.lineWidth = Math.min(1.6, Math.min(a.s, b.s) * 0.5);
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+      for (const p of proj) {
+        if (p.s > 2.6) {
+          ctx.fillStyle = "rgba(79,209,178," + (p.a * 0.1).toFixed(3) + ")";
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.s * 3.4, 0, Math.PI * 2); ctx.fill();
+        }
+        ctx.fillStyle = "rgba(79,209,178," + p.a.toFixed(3) + ")";
+        ctx.beginPath(); ctx.arc(p.x, p.y, Math.max(0.4, p.s), 0, Math.PI * 2); ctx.fill();
       }
 
-      // the trajectory — the logo's rising line, sweeping
-      const pts = [
-        [w * 0.34, h * 0.9], [w * 0.5, h * 0.66], [w * 0.64, h * 0.74],
-        [w * 0.78, h * 0.4], [w * 0.9, h * 0.47], [w * 1.04, h * 0.14]
-      ].map((p, i) => [p[0], p[1] + Math.sin(time * 0.42 + i * 0.8) * h * 0.016]);
+      // The trajectory, now a path through 3D space.
+      const path = [
+        [-0.16, 0.40, 980], [-0.02, 0.16, 820], [0.12, 0.24, 660],
+        [0.26, -0.10, 500], [0.40, -0.02, 360], [0.56, -0.34, 220]
+      ].map((p, i) => project(p[0] * w, (p[1] + Math.sin(time * 0.42 + i * 0.8) * 0.016) * h, p[2]))
+       .filter(Boolean);
 
-      ctx.strokeStyle = "rgba(79,209,178,.62)";
-      ctx.lineWidth = 2.4;
-      ctx.lineJoin = "round";
-      ctx.beginPath();
-      ctx.moveTo(pts[0][0], pts[0][1]);
-      for (let i = 1; i < pts.length; i++) {
-        const p = pts[i - 1], c = pts[i];
-        ctx.bezierCurveTo((p[0] + c[0]) / 2, p[1], (p[0] + c[0]) / 2, c[1], c[0], c[1]);
-      }
-      ctx.stroke();
-
-      pts.forEach((p, i) => {
-        const pulse = 0.5 + 0.5 * Math.sin(time * 1.5 - i * 0.7);
-        ctx.fillStyle = "rgba(79,209,178," + (0.25 + pulse * 0.6) + ")";
-        ctx.beginPath();
-        ctx.arc(p[0], p[1], 3.4 + pulse * 1.8, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.strokeStyle = "rgba(79,209,178,.22)";
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.arc(p[0], p[1], 9 + pulse * 7, 0, Math.PI * 2);
+      if (path.length > 1) {
+        ctx.strokeStyle = "rgba(79,209,178,.6)";
+        ctx.lineWidth = 2.6; ctx.lineJoin = "round";
+        ctx.beginPath(); ctx.moveTo(path[0].x, path[0].y);
+        for (let i = 1; i < path.length; i++) {
+          const a = path[i - 1], b = path[i];
+          ctx.bezierCurveTo((a.x + b.x) / 2, a.y, (a.x + b.x) / 2, b.y, b.x, b.y);
+        }
         ctx.stroke();
-      });
+        path.forEach((p, i) => {
+          const pulse = 0.5 + 0.5 * Math.sin(time * 1.5 - i * 0.7);
+          const rr = (3.2 + pulse * 1.8) * Math.min(1.6, p.k * 1.3);
+          ctx.fillStyle = "rgba(79,209,178," + (0.3 + pulse * 0.6) + ")";
+          ctx.beginPath(); ctx.arc(p.x, p.y, rr, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = "rgba(79,209,178,.22)"; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.arc(p.x, p.y, rr * 2.6 + pulse * 5, 0, Math.PI * 2); ctx.stroke();
+        });
+      }
 
       if (running) raf = requestAnimationFrame(frame);
     }
@@ -330,12 +353,24 @@ const LINKS = {
 
     if (reduced.matches) { frame(0); return; }
 
+    // Pointer parallax across the whole hero, and a slow camera push on scroll.
+    const hero = canvas.closest(".hero") || document.body;
+    hero.addEventListener("pointermove", (e) => {
+      const r = hero.getBoundingClientRect();
+      mx = (e.clientX - r.left) / r.width - 0.5;
+      my = (e.clientY - r.top) / r.height - 0.5;
+    });
+    hero.addEventListener("pointerleave", () => { mx = 0; my = 0; });
+    window.addEventListener("scroll", () => {
+      scrollPush = Math.min(window.scrollY, window.innerHeight) * 0.42;
+    }, { passive: true });
+
     const start = () => { if (!running) { running = true; raf = requestAnimationFrame(frame); } };
     const stop  = () => { running = false; cancelAnimationFrame(raf); };
     document.addEventListener("visibilitychange", () => (document.hidden ? stop() : start()));
     if ("IntersectionObserver" in window) {
       new IntersectionObserver((e) => (e[0].isIntersecting ? start() : stop()), { threshold: 0 }).observe(canvas);
-    } else { start(); }
+    }
     start();
   }
 

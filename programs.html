@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Programs — AIBE at Illinois</title>
-  <meta name="description" content="Weekly hands-on AI workshops, member-led project teams, two hackathons a semester, speaker panels, demo day and more — everything AIBE runs at the University of Illinois.">
+  <meta name="description" content="Weekly hands-on AI workshops, member-led project teams, two hackathons a semester, speaker panels and demo day at the University of Illinois.">
   <meta name="theme-color" content="#02162E">
   <meta property="og:title" content="Programs — AIBE at Illinois">
-  <meta property="og:description" content="Weekly hands-on AI workshops, member-led project teams, two hackathons a semester, speaker panels, demo day and more — everything AIBE runs at the University of Illinois.">
+  <meta property="og:description" content="Weekly hands-on AI workshops, member-led project teams, two hackathons a semester, speaker panels and demo day at the University of Illinois.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/logo-lockup.png">
   <link rel="icon" href="assets/favicon.png" type="image/png">
@@ -56,148 +56,122 @@
     <div class="hero__scrim" aria-hidden="true"></div>
     <div class="wrap wrap--wide hero__inner">
       <p class="eyebrow" style="color:var(--teal-bright)">Programs</p>
-      <h1 class="t-h1" style="color:#fff;max-width:17ch">Everything we run, and why each piece is there.</h1>
-      <p class="hero__sub">Workshops teach the skill. Project teams give it somewhere to go. Hackathons compress a semester into a day. Speakers show you what it looks like when it works.</p>
-      <div class="btn-row hero__actions">
-        <a class="btn btn--primary" href="join.html">Join AIBE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn--discord" data-link="discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.27 5.33A16.6 16.6 0 0 0 15.1 4l-.2.37a15.2 15.2 0 0 1 3.6 1.2 13.1 13.1 0 0 0-11-.0 15.2 15.2 0 0 1 3.6-1.2L10.9 4a16.6 16.6 0 0 0-4.17 1.33C3.6 9.9 2.78 14.33 3.2 18.7a16.7 16.7 0 0 0 5.07 2.57l1.1-1.52a10.9 10.9 0 0 1-1.73-.83l.43-.32a11.9 11.9 0 0 0 10.2 0l.43.32c-.55.32-1.13.6-1.73.83l1.1 1.52a16.7 16.7 0 0 0 5.07-2.57c.5-5.06-.84-9.45-3.87-13.37ZM9.68 15.9c-.99 0-1.8-.9-1.8-2.01 0-1.1.79-2.01 1.8-2.01s1.82.91 1.8 2.01c0 1.1-.8 2.01-1.8 2.01Zm6.64 0c-.99 0-1.8-.9-1.8-2.01 0-1.1.79-2.01 1.8-2.01s1.81.91 1.8 2.01c0 1.1-.79 2.01-1.8 2.01Z"/></svg> See this week on Discord</a>
-      </div>
+      <h1 class="t-h1" style="color:#fff;max-width:14ch" data-words>What we run.</h1>
+      <p class="hero__sub">Workshops teach it. Teams build it. Hackathons compress it. Demo day proves it.</p>
     </div>
   </section>
 
-  <!-- ===================== WORKSHOPS ===================== -->
+  <!-- ===================== WORKSHOP DECK ===================== -->
   <section class="band" id="workshops" data-spine="Workshops">
-    <div class="wrap">
-      <div class="split" style="margin-bottom:clamp(28px,3vw,44px)">
-        <div data-reveal="left">
-          <p class="eyebrow">Weekly &middot; the core of the club</p>
-          <h2 class="t-h2">Workshops.</h2>
+    <div class="wrap wrap--wide">
+      <div class="deck" data-deck>
+        <div class="deck__head">
+          <div style="max-width:40ch">
+            <p class="eyebrow">Weekly &middot; 19 sessions</p>
+            <h2 class="t-h2" data-words>Workshops.</h2>
+            <p class="t-body" style="margin-top:14px">Ninety minutes. Laptops open. Drag to browse.</p>
+          </div>
+          <div class="deck__nav">
+            <button class="deck__btn" type="button" data-deck-prev aria-label="Previous workshops"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+            <button class="deck__btn" type="button" data-deck-next aria-label="More workshops"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+          </div>
         </div>
-        <div data-reveal>
-          <p class="t-lead">Ninety minutes, laptops open, one skill. Written so that a student with no CS background and a student with no business background both leave able to use the thing.</p>
-          <p class="t-body" style="margin-top:14px">This is the running list of sessions on our docket. The order and the exact slate change each semester based on what members ask for &mdash; and if you want to lead one, you can.</p>
+        <div class="deck__rail" data-deck-rail tabindex="0" role="region" aria-label="Workshop topics">
+          <article class="deck__card" data-tilt="5">
+            <h3>Mine Reddit for real pain</h3><p>Where the complaints already are. Leave with a shortlist of problems worth solving.</p><p class="card__k">Discovery</p>
+          </article>
+          <article class="deck__card" data-tilt="5">
+            <h3>Market research with AI</h3><p>Who it's for, what they'd pay, and a real conversation booked this week.</p><p class="card__k">Discovery</p>
+          </article>
+          <article class="deck__card" data-tilt="5">
+            <h3>AI as the sceptical investor</h3><p>Hand your idea to a model told to tear it apart. Then answer it.</p><p class="card__k">Discovery</p>
+          </article>
+          <article class="deck__card" data-tilt="5">
+            <h3>MVPs that click</h3><p>From described problem to something a stranger can actually try.</p><p class="card__k">Build</p>
+          </article>
+          <article class="deck__card" data-tilt="5">
+            <h3>Coding with Claude Code &amp; friends</h3><p>For people who code and people who don't.</p><p class="card__k">Build</p>
+          </article>
+          <article class="deck__card" data-tilt="5">
+            <h3>Micro-SaaS, solo</h3><p>Auth, payments, hosting, support. What you can ignore and what you can't.</p><p class="card__k">Build</p>
+          </article>
+          <article class="deck__card" data-tilt="5">
+            <h3>Agents and MCP</h3><p>Wiring models into the systems you already use.</p><p class="card__k">Build</p>
+          </article>
+          <article class="deck__card" data-tilt="5">
+            <h3>Workflow automation</h3><p>Find the thing you do every week. Delete it.</p><p class="card__k">Build</p>
+          </article>
+          <article class="deck__card" data-tilt="5">
+            <h3>AI marketing</h3><p>Positioning, copy, creative. Where a model helps and where it makes noise.</p><p class="card__k">Market</p>
+          </article>
+          <article class="deck__card" data-tilt="5">
+            <h3>SEO that still works</h3><p>What earns traffic now, and the line between useful and slop.</p><p class="card__k">Market</p>
+          </article>
+          <article class="deck__card" data-tilt="5">
+            <h3>Selling digital products</h3><p>Templates, courses, ebooks. Fastest honest path from skill to revenue.</p><p class="card__k">Market</p>
+          </article>
+          <article class="deck__card" data-tilt="5">
+            <h3>Pricing</h3><p>Tiers, anchors, experiments. Why your first price is too low.</p><p class="card__k">Run it</p>
+          </article>
+          <article class="deck__card" data-tilt="5">
+            <h3>Unit economics</h3><p>The arithmetic founders avoid.</p><p class="card__k">Run it</p>
+          </article>
+          <article class="deck__card" data-tilt="5">
+            <h3>Analytics with AI</h3><p>From a pile of events to a decision.</p><p class="card__k">Run it</p>
+          </article>
+          <article class="deck__card" data-tilt="5">
+            <h3>A/B tests, solo</h3><p>Small samples, and how not to fool yourself.</p><p class="card__k">Run it</p>
+          </article>
+          <article class="deck__card" data-tilt="5">
+            <h3>Feedback &rarr; roadmap</h3><p>A hundred messages into the three things worth doing.</p><p class="card__k">Run it</p>
+          </article>
+          <article class="deck__card" data-tilt="5">
+            <h3>SOPs you can hand off</h3><p>Document your own work well enough to delegate it.</p><p class="card__k">Run it</p>
+          </article>
+          <article class="deck__card" data-tilt="5">
+            <h3>Live build: 3 hours</h3><p>Officers at the front, no safety net. Idea to landing page to outreach.</p><p class="card__k">Special</p>
+          </article>
+          <article class="deck__card" data-tilt="5">
+            <h3>Case studies</h3><p>Teardowns of companies doing this well.</p><p class="card__k">Special</p>
+          </article>
         </div>
-      </div>
-      <div data-stagger="45">
-        <div class="prog" data-reveal>
-          <div class="prog__tag">Discovery</div>
-          <div><h3 class="t-h3">Mining Reddit, reviews and forums for real customer pain</h3><p class="t-body">Where the complaints already are. Pull them, cluster them with a model, and find the problem worth solving before you write a line of anything.</p></div>
-        </div>
-        <div class="prog" data-reveal>
-          <div class="prog__tag">Discovery</div>
-          <div><h3 class="t-h3">Using AI for market research and customer discovery</h3><p class="t-body">Who is this actually for? Sizing a market, writing interview scripts, and getting to a real conversation with a stranger this week.</p></div>
-        </div>
-        <div class="prog" data-reveal>
-          <div class="prog__tag">Discovery</div>
-          <div><h3 class="t-h3">Stress-testing your idea: AI as the skeptical investor</h3><p class="t-body">Hand your idea to a model told to tear it apart, then answer it. The cheapest due diligence you will ever run.</p></div>
-        </div>
-        <div class="prog" data-reveal>
-          <div class="prog__tag">Build</div>
-          <div><h3 class="t-h3">Creating MVPs and finding solutions to problems</h3><p class="t-body">From a described problem to something clickable. The smallest version that lets a real person tell you you're wrong.</p></div>
-        </div>
-        <div class="prog" data-reveal>
-          <div class="prog__tag">Build</div>
-          <div><h3 class="t-h3">Coding with Claude Code, OpenAI and friends</h3><p class="t-body">For people who code and people who don't. How to drive these tools so they produce something you can actually maintain.</p></div>
-        </div>
-        <div class="prog" data-reveal>
-          <div class="prog__tag">Build</div>
-          <div><h3 class="t-h3">Launching a micro-SaaS, solo</h3><p class="t-body">The whole stack for a one-person product: auth, payments, hosting, support. What you can ignore and what you can't.</p></div>
-        </div>
-        <div class="prog" data-reveal>
-          <div class="prog__tag">Build</div>
-          <div><h3 class="t-h3">Connecting AI to your tools with MCP</h3><p class="t-body">Wiring models into the systems you already use, so they do work instead of describing it.</p></div>
-        </div>
-        <div class="prog" data-reveal>
-          <div class="prog__tag">Build</div>
-          <div><h3 class="t-h3">Workflow automation</h3><p class="t-body">Finding the repetitive thing you do every week and deleting it. Emails, scheduling, reporting, intake.</p></div>
-        </div>
-        <div class="prog" data-reveal>
-          <div class="prog__tag">Go to market</div>
-          <div><h3 class="t-h3">AI marketing</h3><p class="t-body">Positioning, copy, creative and channel testing &mdash; and where a model helps versus where it produces noise.</p></div>
-        </div>
-        <div class="prog" data-reveal>
-          <div class="prog__tag">Go to market</div>
-          <div><h3 class="t-h3">AI for SEO: keyword research and posts that rank</h3><p class="t-body">How search works now, what still earns traffic, and the difference between useful content and slop.</p></div>
-        </div>
-        <div class="prog" data-reveal>
-          <div class="prog__tag">Go to market</div>
-          <div><h3 class="t-h3">Creating and selling digital products</h3><p class="t-body">Templates, courses, ebooks. The fastest honest path from skill to revenue for a student.</p></div>
-        </div>
-        <div class="prog" data-reveal>
-          <div class="prog__tag">Run it</div>
-          <div><h3 class="t-h3">Pricing strategy: tiers, anchors and experiments</h3><p class="t-body">What to charge, how to find out, and why your first price is almost always too low.</p></div>
-        </div>
-        <div class="prog" data-reveal>
-          <div class="prog__tag">Run it</div>
-          <div><h3 class="t-h3">Unit economics: are you actually making money?</h3><p class="t-body">The arithmetic founders avoid. Cost per customer, cost per user, and the point where the numbers stop working.</p></div>
-        </div>
-        <div class="prog" data-reveal>
-          <div class="prog__tag">Run it</div>
-          <div><h3 class="t-h3">Analytics and data insight with AI</h3><p class="t-body">Getting from a pile of events to a decision. What to measure and what to ignore.</p></div>
-        </div>
-        <div class="prog" data-reveal>
-          <div class="prog__tag">Run it</div>
-          <div><h3 class="t-h3">Running A/B tests as a one-person team</h3><p class="t-body">Small-sample reality, what you can and can't conclude, and how to avoid fooling yourself.</p></div>
-        </div>
-        <div class="prog" data-reveal>
-          <div class="prog__tag">Run it</div>
-          <div><h3 class="t-h3">Turning customer feedback into product decisions</h3><p class="t-body">Synthesizing a hundred messages into the three things worth doing next.</p></div>
-        </div>
-        <div class="prog" data-reveal>
-          <div class="prog__tag">Run it</div>
-          <div><h3 class="t-h3">Writing SOPs so AI (or a future hire) can run a task</h3><p class="t-body">Documenting your own work well enough to hand it off. The skill that makes delegation possible.</p></div>
-        </div>
-        <div class="prog" data-reveal>
-          <div class="prog__tag">Special</div>
-          <div><h3 class="t-h3">Live build: a business from scratch in three hours</h3><p class="t-body">Officers at the front, no safety net, every decision made in the room. Idea to landing page to first outreach.</p></div>
-        </div>
-        <div class="prog" data-reveal>
-          <div class="prog__tag">Special</div>
-          <div><h3 class="t-h3">Case studies: what has actually worked</h3><p class="t-body">Teardowns of companies using AI well, and what a student can copy from them.</p></div>
-        </div>
+        <div class="deck__track"><div class="deck__bar" data-deck-bar></div></div>
       </div>
       <div class="notice" style="margin-top:28px" data-reveal>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.6v.4"/></svg>
-        <span>Want to teach one of these, or something that isn't on the list? Members lead workshops all the time &mdash; message an officer on Discord.</span>
+        <span>Want to lead one, or teach something not on the list? Message an officer on Discord.</span>
       </div>
     </div>
   </section>
 
-  <!-- ===================== PROJECTS ===================== -->
+  <!-- ===================== PROJECT TEAMS ===================== -->
   <section class="band band--ink" id="projects" data-spine="Project teams">
+    <div class="art-layer art-layer--bl" aria-hidden="true" data-parallax="0.1" style="opacity:.4">
+      <img src="assets/art/art-field.svg" alt="" width="1100" height="800" loading="lazy">
+    </div>
     <div class="wrap">
-      <div class="split">
-        <div class="sticky-col" data-reveal="left">
+      <div class="split" style="align-items:center">
+        <div>
           <p class="eyebrow">All semester</p>
-          <h2 class="t-h2">Project teams.</h2>
-          <p class="t-lead" style="margin-top:20px;color:#AFC2DA">The reason the workshops exist. Every member is encouraged to be on a team, and being on one makes you an Active Member outright.</p>
+          <h2 class="t-h2" data-words>Project teams.</h2>
+          <p class="t-lead" style="margin-top:18px;color:#AFC2DA">The reason the workshops exist. Join a team and you're an Active Member outright.</p>
+          <ul class="ticks" style="margin-top:24px">
+            <li><strong style="color:#fff">Pick one</strong> off the semester's slate</li>
+            <li><strong style="color:#fff">Get matched</strong> to a team that needs you</li>
+            <li><strong style="color:#fff">Or bring your own</strong> and recruit</li>
+          </ul>
+          <p class="t-small" style="margin-top:22px">Two people minimum. A named lead. Milestones, then demo day. Not just software &mdash; services, media and physical products all count.</p>
         </div>
-        <div class="stack" style="--s:26px" data-reveal>
-          <div>
-            <h3 class="t-h3" style="color:#fff">The Project Slate</h3>
-            <p class="t-body">At the start of each semester the Executive Board publishes a slate: a set of defined projects and challenge prompts, each with a goal, deliverables, milestones and a demo-day date. It exists so that nobody has to arrive with an idea already formed.</p>
-          </div>
-          <div>
-            <h3 class="t-h3" style="color:#fff">Three ways onto a team</h3>
-            <ul class="ticks">
-              <li><strong style="color:#fff">Pick one off the Slate.</strong> Find a project that sounds like your kind of problem and join it.</li>
-              <li><strong style="color:#fff">Get matched.</strong> Tell us roughly what you're interested in and we'll put you somewhere sensible.</li>
-              <li><strong style="color:#fff">Bring your own.</strong> Pitch your idea, recruit teammates, get it approved, and it becomes a team like any other.</li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="t-h3" style="color:#fff">How a team works</h3>
-            <p class="t-body">At least two people. A named team lead. Registered with the Secretary. Progress reported at milestones, and a presentation of what you built at demo day. The Director of Projects &mdash; or the Vice President, until that role is filled &mdash; handles team formation and keeps milestones honest.</p>
-          </div>
-          <div>
-            <h3 class="t-h3" style="color:#fff">Not just software</h3>
-            <p class="t-body">Services, media, physical products, marketplaces, content businesses. If it can be built and put in front of a customer, it can be a project.</p>
-          </div>
-          <div>
-            <h3 class="t-h3" style="color:#fff">You own what you make</h3>
-            <p class="t-body">Ideas, work product and any venture that grows out of a team belong to the people who created them. AIBE takes no ownership, equity or revenue share, and will not represent or imply University endorsement of anything you build. We do strongly encourage every team that plans to keep going to put a written founder agreement in place early &mdash; roles, contributions, ownership, decisions &mdash; before it gets complicated.</p>
-          </div>
-        </div>
+        <figure class="fig" data-reveal="scale" data-parallax="0.05">
+          <span class="art art--pane" data-tilt="9">
+            <img src="assets/art/art-layers.svg" alt="Four stacked isometric layers rising from idea to venture" width="900" height="760" loading="lazy">
+          </span>
+          <figcaption>Idea &rarr; team &rarr; prototype &rarr; venture</figcaption>
+        </figure>
+      </div>
+      <div class="notice" style="margin-top:clamp(28px,3.4vw,44px);border-style:solid" data-reveal>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 20 6v6c0 4.5-3.2 7.8-8 9.2C7.2 19.8 4 16.5 4 12V6l8-3.2Z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg>
+        <span><strong style="color:#fff">You own what you make.</strong> AIBE takes no equity, no revenue share, no financial interest &mdash; written into our constitution.</span>
       </div>
     </div>
   </section>
@@ -205,97 +179,46 @@
   <!-- ===================== HACKATHONS ===================== -->
   <section class="band" id="hackathons" data-spine="Hackathons">
     <div class="wrap">
-      <div class="split" style="align-items:center">
-        <div data-reveal="left">
-          <p class="eyebrow">Twice a semester</p>
-          <h2 class="t-h2">Hackathons.</h2>
-          <p class="t-lead" style="margin-top:20px">A full day. Food, API credits and GPU compute provided. You use everything the workshops taught you to get from a blank page to an MVP and a business model, and pitch it that evening.</p>
-          <p class="t-body" style="margin-top:14px">The winning team gets funding to keep building and mentorship to go with it. It is also, in practice, where most teams find each other.</p>
-          <div class="notice" style="margin-top:22px">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.6v.4"/></svg>
-            <span>Prize amount and sponsors for the first hackathon are still being confirmed &mdash; watch Discord. If your company would like to fund one, <a href="sponsors.html">here is what that looks like</a>.</span>
-          </div>
-        </div>
-        <div class="grid grid-2" data-stagger="80">
-          <article class="card" data-reveal><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div><h3 class="t-h3">One full day</h3><p>Breakfast to evening pitches. Long enough to build something, short enough that you can't overthink it.</p></article>
-          <article class="card" data-reveal><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 13.9 9l6.6 1.9-6.6 1.9L12 19.5l-1.9-6.7L3.5 10.9 10.1 9 12 2.5Z"/><path d="M19 17.5l.7 2.3 2.3.7-2.3.7-.7 2.3"/></svg></div><h3 class="t-h3">Credits provided</h3><p>API credits and compute so that cost is never the reason a team stops.</p></article>
-          <article class="card" data-reveal><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18M6.5 20v-6M11.5 20v-10M16.5 20v-14"/></svg></div><h3 class="t-h3">MVP <em>and</em> model</h3><p>Judging looks at the business as hard as the build. A beautiful demo with no customer doesn't win.</p></article>
-          <article class="card" data-reveal><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/></svg></div><h3 class="t-h3">Growing outward</h3><p>We intend to scale these up and eventually invite other schools, including alongside HackIllinois.</p></article>
-        </div>
+      <div style="max-width:600px;margin-bottom:clamp(28px,3.4vw,46px)">
+        <p class="eyebrow">Twice a semester</p>
+        <h2 class="t-h2" data-words>Hackathons.</h2>
+        <p class="t-lead" style="margin-top:16px">One full day. Blank page to MVP and business model, pitched that evening.</p>
+      </div>
+      <div class="grid grid-4" data-stagger="70">
+        <article class="card" data-reveal data-tilt="6"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div><h3 class="t-h3">One full day</h3><p>Long enough to build, short enough not to overthink.</p></article>
+        <article class="card" data-reveal data-tilt="6"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 13.9 9l6.6 1.9-6.6 1.9L12 19.5l-1.9-6.7L3.5 10.9 10.1 9 12 2.5Z"/><path d="M19 17.5l.7 2.3 2.3.7-2.3.7-.7 2.3"/></svg></div><h3 class="t-h3">Credits provided</h3><p>API credits and compute, so cost never stops a team.</p></article>
+        <article class="card" data-reveal data-tilt="6"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18M6.5 20v-6M11.5 20v-10M16.5 20v-14"/></svg></div><h3 class="t-h3">MVP <em>and</em> model</h3><p>A beautiful demo with no customer doesn't win.</p></article>
+        <article class="card" data-reveal data-tilt="6"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/></svg></div><h3 class="t-h3">Growing outward</h3><p>Scaling up toward inviting other schools.</p></article>
       </div>
     </div>
   </section>
 
-  <!-- ===================== SPEAKERS ===================== -->
-  <section class="band band--sunk" id="speakers" data-spine="Speakers">
+  <!-- ===================== SPEAKERS + REST ===================== -->
+  <section class="band band--sunk" id="more" data-spine="And the rest">
     <div class="wrap">
-      <div style="max-width:620px;margin-bottom:clamp(30px,3.5vw,48px)" data-reveal>
-        <p class="eyebrow">Roughly twice a month</p>
-        <h2 class="t-h2">Speakers &amp; panels.</h2>
-        <p class="t-lead" style="margin-top:18px">People who are doing this already, in the room, answering questions from students who are trying to.</p>
+      <div style="max-width:600px;margin-bottom:clamp(28px,3.4vw,46px)">
+        <p class="eyebrow">Monthly, and once in a while</p>
+        <h2 class="t-h2" data-words>Everything else.</h2>
       </div>
-      <div class="grid grid-2" data-stagger="70">
-        <article class="card card--lift" data-reveal><p class="card__k">Fireside</p><h3 class="t-h3">Founder chats with Illinois alumni</h3><p>Alumni who built AI startups, talking about the parts that don't make it into the press release.</p></article>
-        <article class="card card--lift" data-reveal><p class="card__k">Panel</p><h3 class="t-h3">&ldquo;AI in my job&rdquo;</h3><p>Product managers, consultants and analysts who use these tools every day. What's actually changed in their work, and what hasn't.</p></article>
-        <article class="card card--lift" data-reveal><p class="card__k">Panel</p><h3 class="t-h3">What investors look for in AI startups</h3><p>VCs on the difference between a demo and a company, and what gets funded right now.</p></article>
-        <article class="card card--lift" data-reveal><p class="card__k">Talk</p><h3 class="t-h3">Research Park companies</h3><p>Teams from the offices two blocks south on how large organizations are really deploying this.</p></article>
-        <article class="card card--lift" data-reveal style="grid-column:1/-1"><p class="card__k">Talk</p><h3 class="t-h3">Faculty from Gies and Siebel</h3><p>Professors working on AI and business as their day job, on where the research and the market disagree.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== MORE ===================== -->
-  <section class="band" id="more" data-spine="More">
-    <div class="wrap">
-      <div style="max-width:620px;margin-bottom:clamp(28px,3.5vw,44px)" data-reveal>
-        <p class="eyebrow">The rest of it</p>
-        <h2 class="t-h2">Everything else we run.</h2>
-      </div>
-      <div class="grid grid-3" data-stagger="80">
-        <article class="card" data-reveal>
-          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg></div>
-          <h3 class="t-h3">Demo day</h3>
-          <p>End of each semester. Every project team shows what it built to judges, mentors and members. The closest thing we have to a final exam, and far more useful.</p>
-        </article>
-        <article class="card" data-reveal>
-          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9.5" cy="8" r="3.4"/><path d="M3 20a6.5 6.5 0 0 1 13 0"/><path d="M16.5 5.3a3.4 3.4 0 0 1 0 6.6M18 14.3A6.5 6.5 0 0 1 21.5 20"/></svg></div>
-          <h3 class="t-h3">Socials, monthly</h3>
-          <p>A kickoff social, co-founder &ldquo;interviews&rdquo; where you pitch yourself to potential teammates, and startup showcases. Teams form over food more reliably than over forms.</p>
-        </article>
-        <article class="card" data-reveal>
-          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/></svg></div>
-          <h3 class="t-h3">Field trips</h3>
-          <p>Once or twice a year, out to the offices of AI companies. Members who want to go chip in roughly $40&ndash;50 toward transport.</p>
-        </article>
-        <article class="card" data-reveal>
-          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18M6.5 20v-6M11.5 20v-10M16.5 20v-14"/></svg></div>
-          <h3 class="t-h3">The weekly newsletter</h3>
-          <p>A member editorial team picks the best articles, papers and launches of the week and sends them out. A good job if you want to read widely and have a reason to.</p>
-        </article>
-        <article class="card" data-reveal>
-          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 13.9 9l6.6 1.9-6.6 1.9L12 19.5l-1.9-6.7L3.5 10.9 10.1 9 12 2.5Z"/><path d="M19 17.5l.7 2.3 2.3.7-2.3.7-.7 2.3"/></svg></div>
-          <h3 class="t-h3">Idea sprints</h3>
-          <p>Short, sharp sessions where the whole room generates and tears apart ideas together. Where a lot of project teams start.</p>
-        </article>
-        <article class="card" data-reveal>
-          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 20 6v6c0 4.5-3.2 7.8-8 9.2C7.2 19.8 4 16.5 4 12V6l8-3.2Z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></div>
-          <h3 class="t-h3">Mentors</h3>
-          <p>Faculty, staff, alumni, graduate students and industry professionals who advise project teams and lead sessions. If you'd like to mentor, get in touch.</p>
-        </article>
+      <div class="grid grid-3" data-stagger="70">
+        <article class="card card--lift" data-reveal data-tilt="6"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg></div><h3 class="t-h3">Founder firesides</h3><p>Illinois alumni who built AI startups, on the parts that don't make the press release.</p></article>
+        <article class="card card--lift" data-reveal data-tilt="6"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9.5" cy="8" r="3.4"/><path d="M3 20a6.5 6.5 0 0 1 13 0"/><path d="M16.5 5.3a3.4 3.4 0 0 1 0 6.6M18 14.3A6.5 6.5 0 0 1 21.5 20"/></svg></div><h3 class="t-h3">Panels</h3><p>PMs and analysts using AI daily. Investors on what actually gets funded.</p></article>
+        <article class="card card--lift" data-reveal data-tilt="6"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18M6.5 20v-6M11.5 20v-10M16.5 20v-14"/></svg></div><h3 class="t-h3">Demo day</h3><p>Every team shows what it built to judges and members. The semester's final exam.</p></article>
+        <article class="card card--lift" data-reveal data-tilt="6"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/></svg></div><h3 class="t-h3">Field trips</h3><p>Out to AI company offices once or twice a year.</p></article>
+        <article class="card card--lift" data-reveal data-tilt="6"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 13.9 9l6.6 1.9-6.6 1.9L12 19.5l-1.9-6.7L3.5 10.9 10.1 9 12 2.5Z"/><path d="M19 17.5l.7 2.3 2.3.7-2.3.7-.7 2.3"/></svg></div><h3 class="t-h3">Socials &amp; idea sprints</h3><p>Where most teams actually find each other.</p></article>
+        <article class="card card--lift" data-reveal data-tilt="6"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.6 6.6a4.5 4.5 0 0 0 5.9 5.9l-7.9 7.9a2.6 2.6 0 0 1-3.7-3.7l7.9-7.9a4.5 4.5 0 0 0-2.2-2.2Z"/><path d="M14.6 6.6 18 3.2a4.6 4.6 0 0 1 2.8 2.8l-3.4 3.4"/></svg></div><h3 class="t-h3">Weekly newsletter</h3><p>A member editorial team picks the week's best reads.</p></article>
       </div>
     </div>
   </section>
 
   <section class="band band--tight">
     <div class="wrap">
-      <div class="callout" data-reveal="scale">
+      <div class="callout" data-reveal="scale" data-tilt="4">
         <img class="callout__mark" src="assets/logo-mark-light.png" alt="" aria-hidden="true" width="300" height="214">
-        <h2 class="t-h2" style="max-width:18ch">Dates, rooms and who's speaking.</h2>
-        <p class="t-lead" style="color:#C2D4EA;margin-top:20px;max-width:52ch">This page is what we run. The calendar is when we run it &mdash; every workshop, talk and hackathon with a date on it, ready to drop into your own calendar.</p>
-        <div class="btn-row" style="margin-top:30px">
-          <a class="btn btn--primary" href="events.html">See the calendar</a>
-          <a class="btn btn--discord" data-link="discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.27 5.33A16.6 16.6 0 0 0 15.1 4l-.2.37a15.2 15.2 0 0 1 3.6 1.2 13.1 13.1 0 0 0-11-.0 15.2 15.2 0 0 1 3.6-1.2L10.9 4a16.6 16.6 0 0 0-4.17 1.33C3.6 9.9 2.78 14.33 3.2 18.7a16.7 16.7 0 0 0 5.07 2.57l1.1-1.52a10.9 10.9 0 0 1-1.73-.83l.43-.32a11.9 11.9 0 0 0 10.2 0l.43.32c-.55.32-1.13.6-1.73.83l1.1 1.52a16.7 16.7 0 0 0 5.07-2.57c.5-5.06-.84-9.45-3.87-13.37ZM9.68 15.9c-.99 0-1.8-.9-1.8-2.01 0-1.1.79-2.01 1.8-2.01s1.82.91 1.8 2.01c0 1.1-.8 2.01-1.8 2.01Zm6.64 0c-.99 0-1.8-.9-1.8-2.01 0-1.1.79-2.01 1.8-2.01s1.81.91 1.8 2.01c0 1.1-.79 2.01-1.8 2.01Z"/></svg> Join our Discord</a>
-          <a class="btn btn--ghost" href="join.html">How to join AIBE</a>
+        <h2 class="t-h2" style="max-width:16ch" data-words>Dates, rooms, who's speaking.</h2>
+        <div class="btn-row" style="margin-top:28px">
+          <a class="btn btn--primary" href="events.html" data-magnetic="0.25">See the calendar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn--discord" data-link="discord" data-magnetic="0.2"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.27 5.33A16.6 16.6 0 0 0 15.1 4l-.2.37a15.2 15.2 0 0 1 3.6 1.2 13.1 13.1 0 0 0-11-.0 15.2 15.2 0 0 1 3.6-1.2L10.9 4a16.6 16.6 0 0 0-4.17 1.33C3.6 9.9 2.78 14.33 3.2 18.7a16.7 16.7 0 0 0 5.07 2.57l1.1-1.52a10.9 10.9 0 0 1-1.73-.83l.43-.32a11.9 11.9 0 0 0 10.2 0l.43.32c-.55.32-1.13.6-1.73.83l1.1 1.52a16.7 16.7 0 0 0 5.07-2.57c.5-5.06-.84-9.45-3.87-13.37ZM9.68 15.9c-.99 0-1.8-.9-1.8-2.01 0-1.1.79-2.01 1.8-2.01s1.82.91 1.8 2.01c0 1.1-.8 2.01-1.8 2.01Zm6.64 0c-.99 0-1.8-.9-1.8-2.01 0-1.1.79-2.01 1.8-2.01s1.81.91 1.8 2.01c0 1.1-.79 2.01-1.8 2.01Z"/></svg> Discord</a>
         </div>
       </div>
     </div>
@@ -350,5 +273,6 @@
     </div>
   </footer>
   <script src="js/aibe.js"></script>
+  <script src="js/motion.js"></script>
 </body>
 </html>

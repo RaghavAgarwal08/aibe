@@ -13,9 +13,11 @@ team.html       Executive board (placeholders)
 join.html       How to join + FAQ
 sponsors.html   For companies — not in the main nav, linked from the footer
 css/aibe.css    Design system (all colors, type and layout tokens)
-js/aibe.js      Links config, scroll animations, hero animation, calendar
+js/aibe.js      Links config, nav, reveals, 3D hero, calendar rendering
+js/motion.js    Parallax, 3D tilt, word reveals, pinned scenes, decks
 js/events.js    THE CALENDAR DATA — the file you edit most often
 assets/         Logos generated from the brand sheet
+assets/art/     Generated SVG artwork (see section 9)
 ```
 
 ## 1. The five-minute edits
@@ -160,6 +162,45 @@ cd site && python3 -m http.server 8000
 ```
 
 Then open <http://localhost:8000>.
+
+## 9. Artwork and motion
+
+### The art
+
+`assets/art/` holds five SVGs generated from the logo's own motifs — a rising
+bar chart with a trajectory line, a stack of isometric layers, rings of nodes,
+a perspective grid and a node field. They are vector, a few KB each, and read
+on both light and dark backgrounds. There are no stock photos anywhere.
+
+**When you have real photos** (Quad Day, the first workshop, demo day) they
+should replace the abstract art in the feature slots. Look for
+`<span class="art art--pane">` and swap the `<img>` inside it. Keep the
+`data-tilt` attribute on the wrapper and it will still tilt toward the cursor.
+
+### The motion
+
+All of it lives in `js/motion.js` and is driven by attributes in the HTML, so
+you can add or remove an effect without touching JavaScript:
+
+| Attribute | What it does |
+| --- | --- |
+| `data-words` | Splits a heading into words that rotate up into place |
+| `data-tilt="7"` | Card tilts in 3D toward the cursor, with a moving sheen |
+| `data-parallax="-0.12"` | Drifts at a different rate to the page as you scroll |
+| `data-depth="0.6"` | Rotates and pushes back in 3D with scroll position |
+| `data-magnetic="0.25"` | Button leans toward the cursor |
+| `data-scene` | A sticky visual whose frame changes per scroll step |
+| `data-deck` | A horizontal, draggable, snap-scrolling card rail |
+| `data-reveal` | Fades and rises into view (from `js/aibe.js`) |
+
+Every scroll-linked effect shares one `requestAnimationFrame` loop and only
+runs for elements currently on screen, so adding more of them costs very
+little. Everything animates `transform` and `opacity` only.
+
+**Reduced motion:** if the reader's system asks for reduced motion, every
+effect above switches off and the content renders statically — headings
+visible, all scene steps shown, decks still scrollable. The 3D hero draws a
+single still frame. Please keep it that way if you edit this.
 
 ## Colors
 

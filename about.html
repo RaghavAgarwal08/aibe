@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>About — AIBE at Illinois</title>
-  <meta name="description" content="Why AI for Business &amp; Entrepreneurship exists at UIUC: our mission, what we believe, how we differ from research and startup clubs, and who advises us.">
+  <meta name="description" content="Why AI for Business &amp; Entrepreneurship exists at UIUC: our mission, what we believe, and how we differ from research and startup clubs.">
   <meta name="theme-color" content="#02162E">
   <meta property="og:title" content="About — AIBE at Illinois">
-  <meta property="og:description" content="Why AI for Business &amp; Entrepreneurship exists at UIUC: our mission, what we believe, how we differ from research and startup clubs, and who advises us.">
+  <meta property="og:description" content="Why AI for Business &amp; Entrepreneurship exists at UIUC: our mission, what we believe, and how we differ from research and startup clubs.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/logo-lockup.png">
   <link rel="icon" href="assets/favicon.png" type="image/png">
@@ -55,29 +55,46 @@
     <div class="hero__media" aria-hidden="true"><canvas></canvas></div>
     <div class="hero__scrim" aria-hidden="true"></div>
     <div class="wrap wrap--wide hero__inner">
-      <p class="eyebrow" style="color:var(--teal-bright)">About us</p>
-      <h1 class="t-h1" style="color:#fff;max-width:19ch">We are a club for people who would rather build the thing.</h1>
-      <p class="hero__sub">AI for Business &amp; Entrepreneurship is a Registered Student Organization at the University of Illinois Urbana&ndash;Champaign, founded in 2026 by students who got tired of hearing about what AI could do.</p>
+      <p class="eyebrow" style="color:var(--teal-bright)">About</p>
+      <h1 class="t-h1" style="color:#fff;max-width:17ch" data-words>A club for people who'd rather build the thing.</h1>
+      <p class="hero__sub">Chartered at Illinois in 2026. First full cohort, Spring 2027.</p>
     </div>
   </section>
 
-  <!-- ===================== STORY ===================== -->
-  <section class="band" id="story" data-spine="Our story">
+  <!-- ===================== STORY AS SCENE ===================== -->
+  <section class="band" id="story" data-spine="Why we started" data-scene>
     <div class="wrap">
-      <div class="split">
-        <div class="sticky-col" data-reveal="left">
-          <p class="eyebrow">The short version</p>
-          <h2 class="t-h2">Why AIBE started.</h2>
+      <div style="max-width:520px;margin-bottom:clamp(20px,3vw,38px)">
+        <p class="eyebrow">Why we started</p>
+        <h2 class="t-h2" data-words>Two problems, one room.</h2>
+      </div>
+      <div class="scene">
+        <div class="scene__stage">
+          <div class="scene__frame is-active" data-scene-frame>
+            <span class="art art--pane"><img src="assets/art/art-layers.svg" alt="Stacked layers" width="900" height="760" loading="lazy"></span>
+          </div>
+          <div class="scene__frame" data-scene-frame>
+            <span class="art art--pane"><img src="assets/art/art-orbit.svg" alt="Rings of connected nodes" width="820" height="820" loading="lazy"></span>
+          </div>
+          <div class="scene__frame" data-scene-frame>
+            <span class="art art--pane"><img src="assets/art/art-ascent.svg" alt="Rising bars with a trajectory" width="1000" height="680" loading="lazy"></span>
+          </div>
         </div>
-        <div class="stack" style="--s:20px" data-reveal>
-          <p class="t-lead">In the fall of 2026 a group of Illinois students kept running into the same problem from two different directions.</p>
-          <p class="t-body">Some of us could build. We could get a model running, wire up an agent, ship a working prototype in a weekend &mdash; and then stall, because nobody had ever taught us how to find out whether a single human being wanted it.</p>
-          <p class="t-body">The rest of us could see the opportunities. We understood markets, customers, positioning, money. And we were still waiting for a technical co-founder to come along and make something real happen.</p>
-          <p class="t-body">What changed is that the wait is over. The tools got good enough that one student with a laptop can do market research, build a prototype, write the marketing, automate the operations and read their own numbers &mdash; the work that used to need a team. The bottleneck moved. It isn't capability any more; it's judgment, taste, and actually starting.</p>
-          <p class="t-body">So we wrote a constitution, found an advisor, and built the organization we wanted to join: one where the default activity is building something, and where the person who builds it owns it.</p>
-          <div class="notice" style="margin-top:8px">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.6v.4"/></svg>
-            <span>AIBE was registered with Student Engagement in fall 2026. Our founding Executive Board serves until the first regular officer selection in spring 2028.</span>
+        <div class="scene__steps">
+          <div class="scene__step is-active" data-scene-step>
+            <span class="scene__n">The builders</span>
+            <h3 class="t-h3">Could ship, couldn't find a customer</h3>
+            <p class="t-body">Get a model running, wire an agent, build a prototype in a weekend &mdash; then stall, because nobody ever taught us how to find out if a single human wanted it.</p>
+          </div>
+          <div class="scene__step" data-scene-step>
+            <span class="scene__n">The operators</span>
+            <h3 class="t-h3">Could see it, were waiting for someone else</h3>
+            <p class="t-body">Understood markets, customers, money. And were still waiting for a technical co-founder to make something real happen.</p>
+          </div>
+          <div class="scene__step" data-scene-step>
+            <span class="scene__n">What changed</span>
+            <h3 class="t-h3">The wait is over</h3>
+            <p class="t-body">One student with a laptop can now do the research, the prototype, the marketing and the numbers. The bottleneck isn't capability any more. It's judgment, taste, and actually starting.</p>
           </div>
         </div>
       </div>
@@ -85,64 +102,34 @@
   </section>
 
   <!-- ===================== MISSION ===================== -->
-  <section class="band band--ink" id="mission" data-spine="Mission">
+  <section class="band band--ink band--tight" id="mission" data-spine="Mission">
+    <div class="art-layer art-layer--full" aria-hidden="true" style="opacity:.22">
+      <img src="assets/art/art-grid.svg" alt="" width="1400" height="700" loading="lazy">
+    </div>
     <div class="wrap">
-      <div data-reveal style="max-width:760px">
-        <p class="eyebrow">Our mission</p>
-        <h2 class="t-h2" style="line-height:1.14">AIBE is a student-led community for exploring how AI is creating new business and entrepreneurial opportunities &mdash; and for helping students turn those opportunities into real projects and ventures.</h2>
-        <p class="t-lead" style="margin-top:26px;color:#AFC2DA">AI is changing how companies are started, built and run faster than most coursework can follow. Students across every major should have a place to learn by building.</p>
-      </div>
-      <div class="grid grid-2" style="margin-top:clamp(40px,5vw,66px);gap:clamp(20px,3vw,40px)" data-stagger="70">
-        <div data-reveal>
-          <ul class="ticks">
-            <li>Run hands-on workshops on applying AI tools, agents and workflows to real business problems</li>
-            <li>Support member-led Project Teams from idea to working prototype</li>
-            <li>Host speakers, demo days and idea sprints with founders, operators, investors and faculty</li>
-          </ul>
-        </div>
-        <div data-reveal>
-          <ul class="ticks">
-            <li>Connect members with employers, industry partners and sponsors</li>
-            <li>Plug teams into the University's entrepreneurship ecosystem &mdash; competitions, accelerators, advising</li>
-            <li>Contribute to the campus conversation on responsible and ethical use of AI in business</li>
-          </ul>
-        </div>
+      <div style="max-width:800px">
+        <p class="eyebrow">Mission</p>
+        <h2 class="t-h2" style="line-height:1.14" data-words>A student-led community for turning what AI makes possible into real projects and ventures.</h2>
       </div>
     </div>
   </section>
 
-  <!-- ===================== PRINCIPLES ===================== -->
+  <!-- ===================== BELIEFS ===================== -->
   <section class="band" id="principles" data-spine="What we believe">
-    <div class="wrap">
-      <div style="max-width:620px;margin-bottom:clamp(34px,4vw,54px)" data-reveal>
+    <div class="wrap wrap--wide">
+      <div style="max-width:560px;margin-bottom:clamp(28px,3.5vw,48px)">
         <p class="eyebrow">What we believe</p>
-        <h2 class="t-h2">Five things we'd defend in an argument.</h2>
+        <h2 class="t-h2" data-words>Five things we'd defend.</h2>
       </div>
-      <div class="grid grid-2" data-stagger="80">
-        <article class="card" data-reveal>
-          <p class="card__k">01</p>
-          <h3 class="t-h3">Building beats reading about building</h3>
-          <p>A workshop that ends with a slide deck has failed. Every session is designed so that you leave with something that exists &mdash; a prototype, a research brief, a working automation, a page that's live.</p>
-        </article>
-        <article class="card" data-reveal>
-          <p class="card__k">02</p>
-          <h3 class="t-h3">The idea is yours, not ours</h3>
-          <p>We publish a Project Slate each semester so nobody is stuck at a blank page, but you are always free to bring your own idea and recruit a team around it. Not just software &mdash; services, media, hardware, anything.</p>
-        </article>
-        <article class="card" data-reveal>
-          <p class="card__k">03</p>
-          <h3 class="t-h3">Whoever builds it, owns it</h3>
-          <p>Ideas, work and any venture that comes out of a project team belong to the people who created them. AIBE takes no equity, no revenue share, and no financial interest. That's written into our constitution, not just our culture.</p>
-        </article>
-        <article class="card" data-reveal>
-          <p class="card__k">04</p>
-          <h3 class="t-h3">Mixed teams win</h3>
-          <p>The best teams here will have someone who can build, someone who can sell, and someone who notices what everyone else missed. We recruit across the whole campus on purpose.</p>
-        </article>
-        <article class="card" data-reveal style="grid-column:1/-1">
-          <p class="card__k">05</p>
-          <h3 class="t-h3">Use these tools honestly</h3>
-          <p>Respect the terms of the tools you use, the privacy of the people around you, and the University's academic integrity policies. Disclose AI use where it's required. Don't put other people's confidential information into a model. Nobody records a meeting or runs an AI note-taker without announcing it and getting consent first. This is Article IX of our constitution and we take it seriously.</p>
+      <div class="grid grid-3" data-stagger="70">
+        <article class="card" data-reveal data-tilt="6"><p class="card__k">01</p><h3 class="t-h3">Building beats reading about building</h3><p>A workshop that ends in a slide deck has failed.</p></article>
+        <article class="card" data-reveal data-tilt="6"><p class="card__k">02</p><h3 class="t-h3">The idea is yours</h3><p>Bring your own, or take one off the slate. Not just software.</p></article>
+        <article class="card" data-reveal data-tilt="6"><p class="card__k">03</p><h3 class="t-h3">Whoever builds it, owns it</h3><p>No equity, no revenue share, no financial interest. It's in the constitution.</p></article>
+        <article class="card" data-reveal data-tilt="6"><p class="card__k">04</p><h3 class="t-h3">Mixed teams win</h3><p>Someone who builds, someone who sells, someone who notices what the others missed.</p></article>
+        <article class="card" data-reveal data-tilt="6"><p class="card__k">05</p><h3 class="t-h3">Use these tools honestly</h3><p>Respect the terms, the privacy of others and academic integrity. Nobody records a meeting without asking.</p></article>
+        <article class="card" data-reveal data-tilt="6" style="background:transparent;border-style:dashed;display:grid;place-items:center;text-align:center">
+          <p class="card__k" style="margin-bottom:10px">In full</p>
+          <a class="btn btn--ghost btn--sm" data-link="email">Ask for the constitution</a>
         </article>
       </div>
     </div>
@@ -151,98 +138,58 @@
   <!-- ===================== DIFFERENT ===================== -->
   <section class="band band--sunk" id="different" data-spine="How we differ">
     <div class="wrap">
-      <div class="split">
-        <div data-reveal="left">
-          <p class="eyebrow">Where we fit</p>
-          <h2 class="pull">We're designed to <span class="accent">complement</span> the clubs you're already in &mdash; not replace them.</h2>
-        </div>
-        <div data-reveal>
-          <div class="prog" style="border-top:0;padding-top:0">
-            <div class="prog__tag">vs. AI research clubs</div>
-            <div>
-              <h3 class="t-h3">They go deep on the model. We go deep on the business around it.</h3>
-              <p class="t-body">Illinois has excellent organizations for ML research and engineering, and you should join one if that's your thing. AIBE starts at the point where a working tool needs a customer, a price and a reason to exist.</p>
-            </div>
-          </div>
-          <div class="prog">
-            <div class="prog__tag">vs. general startup clubs</div>
-            <div>
-              <h3 class="t-h3">They teach the playbook. We assume you have AI in your hands while you run it.</h3>
-              <p class="t-body">Every part of our curriculum &mdash; discovery, marketing, ops, pricing, analytics &mdash; is taught on the assumption that you have a capable model sitting next to you. That changes what's possible for a team of one or two.</p>
-            </div>
-          </div>
-          <div class="prog">
-            <div class="prog__tag">vs. coursework</div>
-            <div>
-              <h3 class="t-h3">No grade, no syllabus lag, real deadline.</h3>
-              <p class="t-body">Demo day is the deadline and your peers are the audience. The field moves faster than a course catalogue can; a student club can change its workshop list in a week.</p>
-            </div>
-          </div>
-          <div class="prog">
-            <div class="prog__tag">Collaboration</div>
-            <div>
-              <h3 class="t-h3">We'd rather co-host than compete.</h3>
-              <p class="t-body">We actively want to run joint events with other RSOs, and to grow our hackathons toward inviting other schools. If you lead an organization that overlaps with us, come talk to us.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== CAMPUS ===================== -->
-  <section class="band" id="campus" data-spine="On campus">
-    <div class="wrap">
-      <div style="max-width:660px;margin-bottom:clamp(32px,4vw,50px)" data-reveal>
-        <p class="eyebrow">On campus</p>
-        <h2 class="t-h2">Illinois is an unfair advantage. We intend to use it.</h2>
-        <p class="t-lead" style="margin-top:20px">Few campuses have this much startup infrastructure within walking distance of a lecture hall. Part of our job is making sure members actually touch it.</p>
-      </div>
-      <div class="grid grid-3" data-stagger="80">
-        <article class="card" data-reveal>
-          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/></svg></div>
-          <h3 class="t-h3">Research Park, two blocks away</h3>
-          <p>Corporate innovation offices sit right here &mdash; State Farm, Caterpillar, John Deere, Capital One and others. We're building a speaker pipeline out of the people who work in them.</p>
-        </article>
-        <article class="card" data-reveal>
-          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9.5" cy="8" r="3.4"/><path d="M3 20a6.5 6.5 0 0 1 13 0"/><path d="M16.5 5.3a3.4 3.4 0 0 1 0 6.6M18 14.3A6.5 6.5 0 0 1 21.5 20"/></svg></div>
-          <h3 class="t-h3">Gies, Grainger and Siebel</h3>
-          <p>Faculty working on AI and business, and students from three very different buildings. Our workshops are written so a Gies sophomore and a CS junior get something out of the same hour.</p>
-        </article>
-        <article class="card" data-reveal>
-          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18M6.5 20v-6M11.5 20v-10M16.5 20v-14"/></svg></div>
-          <h3 class="t-h3">The entrepreneurship ecosystem</h3>
-          <p>Campus competitions, accelerators, funding and advising already exist. We connect project teams to them rather than pretending we're the only route.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== ADVISOR ===================== -->
-  <section class="band band--tight band--sunk" id="advisor" data-spine="Advisor">
-    <div class="wrap wrap--narrow">
-      <div class="card" style="display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,3vw,34px);align-items:center" data-reveal>
-        <div style="width:84px;height:84px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--teal) 14%,transparent);font-family:var(--font-display);font-weight:800;font-size:1.6rem;color:var(--accent);letter-spacing:-.03em" aria-hidden="true">FL</div>
+      <div class="split" style="align-items:center">
         <div>
-          <p class="card__k">Faculty advisor</p>
-          <h3 class="t-h3" style="margin-top:6px">Frank Liu</h3>
-          <p style="margin-top:6px">Associate Professor of Marketing, Gies College of Business. Professor Liu advises the Executive Board, sits in on meetings, and helps shape our training program and our approach to responsible AI use.</p>
+          <p class="eyebrow">Where we fit</p>
+          <h2 class="pull" data-words>Built to <span class="accent">complement</span> the clubs you're already in.</h2>
+        </div>
+        <div class="figures" style="grid-template-columns:1fr">
+          <div class="figure-card" data-reveal data-tilt="5">
+            <p class="card__k">vs. AI research clubs</p>
+            <p class="figure-card__l" style="margin-top:8px;font-size:1.05rem;color:var(--text)">They go deep on the model. We start where a working tool needs a customer and a price.</p>
+          </div>
+          <div class="figure-card" data-reveal data-tilt="5">
+            <p class="card__k">vs. startup clubs</p>
+            <p class="figure-card__l" style="margin-top:8px;font-size:1.05rem;color:var(--text)">They teach the playbook. We assume a capable model is sitting next to you while you run it.</p>
+          </div>
+          <div class="figure-card" data-reveal data-tilt="5">
+            <p class="card__k">vs. coursework</p>
+            <p class="figure-card__l" style="margin-top:8px;font-size:1.05rem;color:var(--text)">No grade, no syllabus lag. Demo day is the deadline and your peers are the audience.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== CTA ===================== -->
-  <section class="band" id="next" data-spine="Next">
+  <!-- ===================== CAMPUS + ADVISOR ===================== -->
+  <section class="band" id="campus" data-spine="On campus">
+    <div class="wrap wrap--wide">
+      <div style="max-width:580px;margin-bottom:clamp(26px,3.4vw,44px)">
+        <p class="eyebrow">On campus</p>
+        <h2 class="t-h2" data-words>Illinois is an unfair advantage.</h2>
+      </div>
+      <div class="grid grid-4" data-stagger="70">
+        <article class="card" data-reveal data-tilt="6"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/></svg></div><h3 class="t-h3">Research Park</h3><p>Corporate innovation offices two blocks away, and a speaker pipeline out of them.</p></article>
+        <article class="card" data-reveal data-tilt="6"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9.5" cy="8" r="3.4"/><path d="M3 20a6.5 6.5 0 0 1 13 0"/><path d="M16.5 5.3a3.4 3.4 0 0 1 0 6.6M18 14.3A6.5 6.5 0 0 1 21.5 20"/></svg></div><h3 class="t-h3">Gies, Grainger, Siebel</h3><p>Three very different buildings, one workshop they all get something from.</p></article>
+        <article class="card" data-reveal data-tilt="6"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18M6.5 20v-6M11.5 20v-10M16.5 20v-14"/></svg></div><h3 class="t-h3">The ecosystem</h3><p>Competitions, accelerators and funding already exist. We connect teams to them.</p></article>
+        <article class="card" data-reveal data-tilt="6">
+          <div style="width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--teal) 14%,transparent);font-family:var(--font-display);font-weight:800;color:var(--accent);margin-bottom:18px" aria-hidden="true">FL</div>
+          <p class="card__k">Faculty advisor</p>
+          <h3 class="t-h3">Frank Liu</h3><p>Associate Professor of Marketing, Gies College of Business.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--tight">
     <div class="wrap">
-      <div class="callout" data-reveal="scale">
+      <div class="callout" data-reveal="scale" data-tilt="4">
         <img class="callout__mark" src="assets/logo-mark-light.png" alt="" aria-hidden="true" width="300" height="214">
-        <p class="eyebrow" style="color:var(--teal-bright)">What's next</p>
-        <h2 class="t-h1" style="max-width:15ch">Come to one meeting before you decide.</h2>
-        <p class="t-lead" style="color:#C2D4EA;margin-top:22px;max-width:52ch">That's genuinely the whole pitch. One workshop, ninety minutes, and you'll know whether this is your kind of room.</p>
-        <div class="btn-row" style="margin-top:32px">
-          <a class="btn btn--primary" href="join.html">How to join <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a class="btn btn--ghost" href="programs.html">What we run</a>
+        <h2 class="t-h1" style="max-width:15ch" data-words>Come to one meeting.</h2>
+        <p class="t-lead" style="color:#C2D4EA;margin-top:20px;max-width:46ch">Ninety minutes and you'll know whether this is your kind of room.</p>
+        <div class="btn-row" style="margin-top:28px">
+          <a class="btn btn--primary" href="join.html" data-magnetic="0.25">How to join <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn--ghost" href="events.html" data-magnetic="0.2">When we meet</a>
         </div>
       </div>
     </div>
@@ -297,5 +244,6 @@
     </div>
   </footer>
   <script src="js/aibe.js"></script>
+  <script src="js/motion.js"></script>
 </body>
 </html>

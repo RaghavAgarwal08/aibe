@@ -57,8 +57,8 @@
     <div class="hero__scrim" aria-hidden="true"></div>
     <div class="wrap wrap--wide hero__inner">
       <p class="hero__kicker"><span class="dot"></span> Tentative &mdash; final dates coming soon</p>
-      <h1 class="t-h1" style="color:#fff;max-width:14ch">What's on, and when.</h1>
-      <p class="hero__sub">Every workshop, talk, hackathon and social, in one place. Add any of them to your own calendar in one click.</p>
+      <h1 class="t-h1" style="color:#fff;max-width:14ch" data-words>What's on, and when.</h1>
+      <p class="hero__sub">Every workshop, talk and hackathon. One click to your own calendar.</p>
       <div class="btn-row hero__actions">
         <button class="btn btn--primary" type="button" data-ics-all><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> Add the whole semester</button>
         <a class="btn btn--discord" data-link="discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.27 5.33A16.6 16.6 0 0 0 15.1 4l-.2.37a15.2 15.2 0 0 1 3.6 1.2 13.1 13.1 0 0 0-11-.0 15.2 15.2 0 0 1 3.6-1.2L10.9 4a16.6 16.6 0 0 0-4.17 1.33C3.6 9.9 2.78 14.33 3.2 18.7a16.7 16.7 0 0 0 5.07 2.57l1.1-1.52a10.9 10.9 0 0 1-1.73-.83l.43-.32a11.9 11.9 0 0 0 10.2 0l.43.32c-.55.32-1.13.6-1.73.83l1.1 1.52a16.7 16.7 0 0 0 5.07-2.57c.5-5.06-.84-9.45-3.87-13.37ZM9.68 15.9c-.99 0-1.8-.9-1.8-2.01 0-1.1.79-2.01 1.8-2.01s1.82.91 1.8 2.01c0 1.1-.8 2.01-1.8 2.01Zm6.64 0c-.99 0-1.8-.9-1.8-2.01 0-1.1.79-2.01 1.8-2.01s1.81.91 1.8 2.01c0 1.1-.79 2.01-1.8 2.01Z"/></svg> Changes land on Discord first</a>
@@ -73,8 +73,8 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.6v.4"/></svg>
         <div>
           <p class="tentative__k">This is a tentative calendar</p>
-          <p>Every date on this page is a plan, not a commitment. Rooms are not booked yet, speakers are not confirmed, and times can still move.</p>
-          <p><strong>Final dates will be decided and announced on our Discord, and posted here as soon as they are set.</strong> If you only do one thing, join the Discord &mdash; that is where a change reaches you the same day.</p>
+          <p>Every date here is a plan, not a commitment. Rooms aren't booked and speakers aren't confirmed.</p>
+          <p><strong>Final dates will be decided and announced on our Discord, and posted here as soon as they are set.</strong></p>
           <div class="btn-row" style="margin-top:18px">
             <a class="btn btn--primary btn--sm" data-link="discord">Join our Discord</a>
           </div>
@@ -86,7 +86,7 @@
   <!-- ===================== NEXT UP ===================== -->
   <section class="band band--tight" id="next" data-spine="Next up">
     <div class="wrap">
-      <div class="next" data-events-next data-reveal="scale">
+      <div class="next" data-events-next data-reveal="scale" data-tilt="4">
         <!-- filled by wireEvents() -->
       </div>
     </div>
@@ -97,12 +97,12 @@
     <div class="wrap">
       <div style="max-width:640px;margin-bottom:clamp(26px,3vw,40px)" data-reveal>
         <p class="eyebrow">Upcoming</p>
-        <h2 class="t-h2">The semester, start to finish.</h2>
+        <h2 class="t-h2" data-words>The semester, start to finish.</h2>
       </div>
 
       <div class="ev-draft" data-events-draft data-reveal>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.6v.4"/></svg>
-        <span><strong>Tentative.</strong> Every date below can still move. Final dates go out on the Discord and get posted here.</span>
+        <span><strong>Tentative.</strong> Dates can still move. Final ones go out on Discord and get posted here.</span>
       </div>
 
       <div class="ev-bar" data-reveal>
@@ -116,26 +116,27 @@
 
   <!-- ===================== RHYTHM ===================== -->
   <section class="band band--ink band--tight" id="rhythm" data-spine="The rhythm">
+    <div class="art-layer art-layer--full" aria-hidden="true" style="opacity:.2"><img src="assets/art/art-grid.svg" alt="" width="1400" height="700" loading="lazy"></div>
     <div class="wrap">
       <div style="max-width:620px;margin-bottom:clamp(26px,3vw,38px)" data-reveal>
         <p class="eyebrow">If you only remember one thing</p>
-        <h2 class="t-h2">The weekly rhythm.</h2>
+        <h2 class="t-h2" data-words>The weekly rhythm.</h2>
       </div>
-      <dl class="rhythm" data-reveal>
+      <dl class="rhythm" data-reveal data-depth="0.6">
         <div>
           <dt>Every week</dt>
-          <dd><strong>Workshop</strong>Thursday evenings during the semester. Ninety minutes, laptops open, one skill. This is the meeting to come to if you come to one.</dd>
+          <dd><strong>Workshop</strong>Thursday evenings. Ninety minutes, one skill. The meeting to come to if you come to one.</dd>
         </div>
         <div>
           <dt>Every month</dt>
-          <dd><strong>Speaker or social</strong>A fireside, a panel, or a night that exists purely so teams find each other.</dd>
+          <dd><strong>Speaker or social</strong>A fireside, a panel, or a night so teams find each other.</dd>
         </div>
         <div>
           <dt>Twice a semester</dt>
-          <dd><strong>Hackathon</strong>A full Saturday, food and credits provided, ending in pitches.</dd>
+          <dd><strong>Hackathon</strong>A full Saturday. Food, credits, pitches.</dd>
         </div>
       </dl>
-      <p class="t-small" style="margin-top:22px;color:var(--text-3)">Executive Board meetings run separately and are not listed here. Officers, check Discord.</p>
+      <p class="t-small" style="margin-top:22px;color:var(--text-3)">Board meetings aren't listed here. Officers, check Discord.</p>
     </div>
   </section>
 
@@ -144,7 +145,7 @@
     <div class="wrap">
       <div style="max-width:640px;margin-bottom:clamp(22px,2.6vw,34px)" data-reveal>
         <p class="eyebrow">Archive</p>
-        <h2 class="t-h2">Already happened.</h2>
+        <h2 class="t-h2" data-words>Already happened.</h2>
       </div>
       <div data-events-past data-reveal></div>
     </div>
@@ -153,11 +154,11 @@
   <!-- ===================== CTA ===================== -->
   <section class="band band--tight" id="stay" data-spine="Stay posted">
     <div class="wrap">
-      <div class="callout" data-reveal="scale">
+      <div class="callout" data-reveal="scale" data-tilt="4">
         <img class="callout__mark" src="assets/logo-mark-light.png" alt="" aria-hidden="true" width="300" height="214">
         <p class="eyebrow" style="color:var(--teal-bright)">Don't miss one</p>
-        <h2 class="t-h1" style="max-width:16ch">Rooms change. Discord doesn't.</h2>
-        <p class="t-lead" style="color:#C2D4EA;margin-top:22px;max-width:54ch">This page is the plan. The Discord is where a room change at 4&nbsp;pm actually reaches you, and where the week's workshop gets posted with whatever you need to bring.</p>
+        <h2 class="t-h1" style="max-width:16ch" data-words>Rooms change. Discord doesn't.</h2>
+        <p class="t-lead" style="color:#C2D4EA;margin-top:22px;max-width:44ch">This page is the plan. Discord is where a 4&nbsp;pm room change actually reaches you.</p>
         <div class="btn-row" style="margin-top:32px">
           <a class="btn btn--discord" data-link="discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.27 5.33A16.6 16.6 0 0 0 15.1 4l-.2.37a15.2 15.2 0 0 1 3.6 1.2 13.1 13.1 0 0 0-11-.0 15.2 15.2 0 0 1 3.6-1.2L10.9 4a16.6 16.6 0 0 0-4.17 1.33C3.6 9.9 2.78 14.33 3.2 18.7a16.7 16.7 0 0 0 5.07 2.57l1.1-1.52a10.9 10.9 0 0 1-1.73-.83l.43-.32a11.9 11.9 0 0 0 10.2 0l.43.32c-.55.32-1.13.6-1.73.83l1.1 1.52a16.7 16.7 0 0 0 5.07-2.57c.5-5.06-.84-9.45-3.87-13.37ZM9.68 15.9c-.99 0-1.8-.9-1.8-2.01 0-1.1.79-2.01 1.8-2.01s1.82.91 1.8 2.01c0 1.1-.8 2.01-1.8 2.01Zm6.64 0c-.99 0-1.8-.9-1.8-2.01 0-1.1.79-2.01 1.8-2.01s1.81.91 1.8 2.01c0 1.1-.79 2.01-1.8 2.01Z"/></svg> Join our Discord</a>
           <a class="btn btn--primary" href="join.html">Join AIBE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -216,5 +217,6 @@
     </div>
   </footer>
   <script src="js/aibe.js"></script>
+  <script src="js/motion.js"></script>
 </body>
 </html>
