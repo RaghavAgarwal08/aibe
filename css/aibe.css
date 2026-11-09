@@ -166,7 +166,7 @@ p:last-child { margin-bottom: 0; }
    .callout and .next are dark cards sitting inside light bands, so they need
    the same token overrides as a full-width ink band — otherwise light-theme
    text colors land on navy. */
-.band--ink, .callout, .next {
+.band--ink, .callout, .next, .hero {
   color: #E3ECF7;
   --text: #E8EFF8;
   --text-2: #AFC2DA;
@@ -320,10 +320,12 @@ p:last-child { margin-bottom: 0; }
 .btn--primary:hover { background: #0B5C4E; box-shadow: 0 10px 26px -10px rgba(14,111,95,.9); }
 .band--ink .btn--primary,
 .callout .btn--primary,
-.next .btn--primary { background: var(--teal-bright); color: #02231D; box-shadow: 0 8px 26px -10px rgba(79,209,178,.7); }
+.next .btn--primary,
+.hero .btn--primary { background: var(--teal-bright); color: #02231D; box-shadow: 0 8px 26px -10px rgba(79,209,178,.7); }
 .band--ink .btn--primary:hover,
 .callout .btn--primary:hover,
-.next .btn--primary:hover { background: #6EE0C4; }
+.next .btn--primary:hover,
+.hero .btn--primary:hover { background: #6EE0C4; }
 
 .btn--solid { background: var(--navy); color: #fff; }
 .btn--solid:hover { background: #063464; }
@@ -332,10 +334,12 @@ p:last-child { margin-bottom: 0; }
 .btn--ghost:hover { border-color: var(--text-3); background: var(--bg-elev); }
 .band--ink .btn--ghost,
 .callout .btn--ghost,
-.next .btn--ghost { color: #fff; border-color: rgba(255,255,255,.32); }
+.next .btn--ghost,
+.hero .btn--ghost { color: #fff; border-color: rgba(255,255,255,.32); }
 .band--ink .btn--ghost:hover,
 .callout .btn--ghost:hover,
-.next .btn--ghost:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.55); }
+.next .btn--ghost:hover,
+.hero .btn--ghost:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.55); }
 
 .btn--discord { background: #5865F2; color: #fff; }
 .btn--discord:hover { background: #4752E0; }
@@ -360,7 +364,7 @@ p:last-child { margin-bottom: 0; }
   letter-spacing: .12em; text-transform: uppercase; color: var(--accent);
 }
 .card h3 { margin: 0 0 10px; }
-.card p { font-size: 1rem; color: var(--text-2); }
+:where(.card) p { font-size: 1rem; color: var(--text-2); }
 
 .icon-badge {
   width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center;
@@ -605,7 +609,7 @@ p:last-child { margin-bottom: 0; }
   color: #fff; position: relative; overflow: hidden;
 }
 .callout h2 { color: #fff; }
-.callout p { color: #C2D4EA; }
+:where(.callout) p { color: #C2D4EA; }
 .callout__mark {
   position: absolute; right: -40px; bottom: -58px; width: 300px; opacity: .085;
   pointer-events: none; user-select: none;
@@ -822,3 +826,39 @@ p:last-child { margin-bottom: 0; }
 .rhythm dd { margin: 0; font-size: 1.02rem; color: var(--text-2); }
 .rhythm dd strong { color: var(--text); font-weight: 600; display: block; font-family: var(--font-display); font-size: 1.1rem; letter-spacing: -.015em; margin-bottom: 4px; }
 @media (max-width: 760px) { .rhythm { grid-template-columns: 1fr; } }
+
+/* --- Sponsorship tiers ----------------------------------------------------- */
+.tiers { align-items: start; }
+.tier { display: flex; flex-direction: column; }
+.tier__amt {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(1.8rem, 2.8vw, 2.3rem); letter-spacing: -.04em; line-height: 1;
+  color: var(--text); margin: 10px 0 20px; font-variant-numeric: tabular-nums;
+}
+.tier__amt span {
+  display: block; font-family: var(--font-body); font-size: .88rem; font-weight: 400;
+  letter-spacing: 0; color: var(--text-3); margin-top: 8px;
+}
+.tier__list { margin-top: auto; }
+.tier__list li { font-size: 1rem; }
+.tier--featured {
+  border-color: color-mix(in srgb, var(--teal) 45%, transparent);
+  box-shadow: var(--shadow-m);
+}
+.tier__flag {
+  position: absolute; top: -11px; left: clamp(22px, 2.6vw, 32px);
+  font-family: var(--font-mono); font-size: .66rem; font-weight: 500;
+  letter-spacing: .12em; text-transform: uppercase;
+  background: var(--teal-deep); color: #fff;
+  padding: 5px 11px; border-radius: 999px; margin: 0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .tier__flag { background: var(--teal-bright); color: #02231D; }
+}
+:root[data-theme="dark"] .tier__flag { background: var(--teal-bright); color: #02231D; }
+
+.partner-strip {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 20px 32px;
+}
+.partner-strip .eyebrow { margin-bottom: 12px; }
