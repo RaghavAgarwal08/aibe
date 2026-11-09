@@ -106,7 +106,7 @@ const LINKS = {
           io.unobserve(entry.target);
         });
       },
-      { rootMargin: "0px 0px -11% 0px", threshold: 0.06 }
+      { rootMargin: "0px 0px -11% 0px", threshold: 0 }
     );
     items.forEach((el) => io.observe(el));
 
@@ -606,7 +606,9 @@ const LINKS = {
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    wireLinks(); wireNav(); wireReveal(); wireSpine();
-    wireCounters(); wireHero(); wireEvents(); wireYear();
+    // wireEvents() must run before wireReveal(): it injects the calendar,
+    // and an IntersectionObserver attached to a zero-height element never fires.
+    wireLinks(); wireNav(); wireEvents();
+    wireReveal(); wireSpine(); wireCounters(); wireHero(); wireYear();
   });
 })();
