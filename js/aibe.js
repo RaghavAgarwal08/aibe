@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AIBE — site behaviour
+   AIBE — site behavior
    Edit LINKS below and every button on every page updates.
    ========================================================================== */
 

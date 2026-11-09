@@ -10,7 +10,7 @@ about.html      About us
 programs.html   Workshops, project teams, hackathons, speakers
 team.html       Executive board (placeholders)
 join.html       How to join + FAQ
-css/aibe.css    Design system (all colours, type and layout tokens)
+css/aibe.css    Design system (all colors, type and layout tokens)
 js/aibe.js      Links config, scroll animations, hero animation
 assets/         Logos generated from the brand sheet
 ```
@@ -99,7 +99,7 @@ cd site && python3 -m http.server 8000
 
 Then open <http://localhost:8000>.
 
-## Colours
+## Colors
 
 Sampled from the logo. Defined once at the top of `css/aibe.css`.
 
