@@ -157,7 +157,14 @@ p:last-child { margin-bottom: 0; }
 .wrap { width: 100%; max-width: var(--measure); margin-inline: auto; padding-inline: var(--gutter); }
 .wrap--wide { max-width: 1420px; }
 .wrap--narrow { max-width: 860px; }
-.band { padding-block: var(--band-y); position: relative; }
+.band {
+  padding-block: var(--band-y);
+  position: relative;
+  /* Decorative .art-layer blocks deliberately bleed past the band edge.
+     `clip` (not `hidden`) contains them WITHOUT making the band a scroll
+     container, which would break the sticky stage inside .scene. */
+  overflow: clip;
+}
 .band--sunk { background: var(--bg-sunk); }
 .band--elev { background: var(--bg-elev); }
 .band--tight { padding-block: clamp(52px, 6vw, 86px); }
