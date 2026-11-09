@@ -595,8 +595,10 @@ const LINKS = {
 
     /* ---- draft notice ---- */
     if (typeof AIBE_DRAFT !== "undefined" && !AIBE_DRAFT) {
-      const d = $("[data-events-draft]");
-      if (d) d.remove();
+      $$("[data-events-draft]").forEach((d) => {
+        const band = d.closest("#tentative");
+        (band || d).remove();
+      });
     }
   }
 

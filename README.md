@@ -64,10 +64,12 @@ The page does the rest on its own:
 - picks the soonest event for the "Next up" card
 - generates a downloadable `.ics` per event, and one for the whole semester
 
-**The schedule that ships is a draft** built from the events plan — plausible
-dates, every room marked TBA. While `AIBE_DRAFT = true` at the top of the file,
-the page shows a "draft schedule" notice. Set it to `false` once dates and rooms
-are real and the notice disappears.
+**The schedule that ships is tentative** — plausible dates built from the events
+plan, every room marked TBA. While `AIBE_DRAFT = true` at the top of the file,
+the page carries a badge in the hero, a banner above the first date, and a short
+reminder above the list, all saying final dates will be announced on Discord and
+posted here. Set the flag to `false` once dates and rooms are real and all of
+that disappears on its own.
 
 Adding a new type of event: add it to `AIBE_EVENT_TYPES` at the bottom of the
 file first, then use its key in an event.

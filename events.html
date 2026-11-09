@@ -56,12 +56,29 @@
     <div class="hero__media" aria-hidden="true"><canvas></canvas></div>
     <div class="hero__scrim" aria-hidden="true"></div>
     <div class="wrap wrap--wide hero__inner">
-      <p class="eyebrow" style="color:var(--teal-bright)">Calendar</p>
+      <p class="hero__kicker"><span class="dot"></span> Tentative &mdash; final dates coming soon</p>
       <h1 class="t-h1" style="color:#fff;max-width:14ch">What's on, and when.</h1>
       <p class="hero__sub">Every workshop, talk, hackathon and social, in one place. Add any of them to your own calendar in one click.</p>
       <div class="btn-row hero__actions">
         <button class="btn btn--primary" type="button" data-ics-all><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> Add the whole semester</button>
         <a class="btn btn--discord" data-link="discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.27 5.33A16.6 16.6 0 0 0 15.1 4l-.2.37a15.2 15.2 0 0 1 3.6 1.2 13.1 13.1 0 0 0-11-.0 15.2 15.2 0 0 1 3.6-1.2L10.9 4a16.6 16.6 0 0 0-4.17 1.33C3.6 9.9 2.78 14.33 3.2 18.7a16.7 16.7 0 0 0 5.07 2.57l1.1-1.52a10.9 10.9 0 0 1-1.73-.83l.43-.32a11.9 11.9 0 0 0 10.2 0l.43.32c-.55.32-1.13.6-1.73.83l1.1 1.52a16.7 16.7 0 0 0 5.07-2.57c.5-5.06-.84-9.45-3.87-13.37ZM9.68 15.9c-.99 0-1.8-.9-1.8-2.01 0-1.1.79-2.01 1.8-2.01s1.82.91 1.8 2.01c0 1.1-.8 2.01-1.8 2.01Zm6.64 0c-.99 0-1.8-.9-1.8-2.01 0-1.1.79-2.01 1.8-2.01s1.81.91 1.8 2.01c0 1.1-.79 2.01-1.8 2.01Z"/></svg> Changes land on Discord first</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TENTATIVE NOTICE ===================== -->
+  <section class="band" id="tentative" style="padding-block:clamp(28px,3.2vw,44px)" data-spine="Please read">
+    <div class="wrap">
+      <div class="tentative" data-events-draft data-reveal>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.6v.4"/></svg>
+        <div>
+          <p class="tentative__k">This is a tentative calendar</p>
+          <p>Every date on this page is a plan, not a commitment. Rooms are not booked yet, speakers are not confirmed, and times can still move.</p>
+          <p><strong>Final dates will be decided and announced on our Discord, and posted here as soon as they are set.</strong> If you only do one thing, join the Discord &mdash; that is where a change reaches you the same day.</p>
+          <div class="btn-row" style="margin-top:18px">
+            <a class="btn btn--primary btn--sm" data-link="discord">Join our Discord</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -85,7 +102,7 @@
 
       <div class="ev-draft" data-events-draft data-reveal>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.6v.4"/></svg>
-        <span><strong>Draft schedule.</strong> Dates are planned, rooms are not booked yet, and speakers are still being confirmed. Everything here can move &mdash; the Discord has the version we actually trust.</span>
+        <span><strong>Tentative.</strong> Every date below can still move. Final dates go out on the Discord and get posted here.</span>
       </div>
 
       <div class="ev-bar" data-reveal>

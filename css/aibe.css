@@ -862,3 +862,22 @@ p:last-child { margin-bottom: 0; }
   gap: 20px 32px;
 }
 .partner-strip .eyebrow { margin-bottom: 12px; }
+
+/* --- Tentative-calendar banner -------------------------------------------- */
+.tentative {
+  display: flex; gap: clamp(14px, 1.8vw, 20px); align-items: flex-start;
+  border: 1.5px solid color-mix(in srgb, var(--teal) 48%, transparent);
+  border-left-width: 5px;
+  border-radius: var(--r-m);
+  background: color-mix(in srgb, var(--teal) 9%, transparent);
+  padding: clamp(20px, 2.4vw, 28px) clamp(18px, 2.4vw, 30px);
+}
+.tentative > svg { width: 24px; height: 24px; flex: none; color: var(--accent); margin-top: 3px; }
+.tentative__k {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(1.08rem, 1.7vw, 1.26rem); letter-spacing: -.018em;
+  color: var(--text); margin: 0 0 8px;
+}
+:where(.tentative) p { font-size: 1rem; color: var(--text-2); margin-bottom: .6em; max-width: 68ch; }
+:where(.tentative) p:last-of-type { margin-bottom: 0; }
+.tentative strong { color: var(--text); font-weight: 600; }

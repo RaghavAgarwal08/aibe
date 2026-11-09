@@ -28,15 +28,6 @@ const AIBE_DRAFT = true;
 
 const AIBE_EVENTS = [
 
-  /* ---------------------------------------------------------- Fall 2026 -- */
-  {
-    date: "2026-11-19", start: "18:00", end: "19:00",
-    type: "info",
-    title: "Interest session: what AIBE is",
-    location: "Room TBA",
-    blurb: "What we're building, what a semester looks like, and how to get on a project team in the spring. Come with questions; leave on the Discord."
-  },
-
   /* -------------------------------------------------------- Spring 2027 -- */
   {
     date: "2027-01-26", start: "18:00", end: "19:00",
