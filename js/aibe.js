@@ -637,15 +637,58 @@ const LINKS = {
     }
   }
 
+  /* --------------------------------------------------------------- photos */
+  // Builds the gallery from AIBE_PHOTOS in js/photos.js. With no photos the
+  // whole section removes itself, so the page never shows empty frames.
+  function wirePhotos() {
+    const section = $("[data-photos]");
+    if (!section) return;
+
+    const list = typeof AIBE_PHOTOS !== "undefined" && Array.isArray(AIBE_PHOTOS)
+      ? AIBE_PHOTOS.filter((p) => p && p.src)
+      : [];
+
+    if (!list.length) { section.remove(); return; }
+
+    const esc = (s) => String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+    const grid = $("[data-photos-grid]", section);
+    grid.innerHTML = list.map((p, i) => {
+      const cap = p.caption
+        ? '<figcaption>' + esc(p.caption) + "</figcaption>"
+        : "";
+      return '<figure class="shot' + (p.wide ? " shot--wide" : "") + '" data-reveal data-tilt="5"' +
+             ' style="--d:' + (i * 70) + 'ms">' +
+               '<img src="' + esc(p.src) + '" alt="' + esc(p.alt || "") + '"' +
+               ' loading="lazy" decoding="async">' +
+               cap +
+             "</figure>";
+    }).join("");
+
+    // A file that 404s would otherwise leave a broken-image frame.
+    $$("img", grid).forEach((img) => {
+      img.addEventListener("error", () => {
+        const fig = img.closest(".shot");
+        if (fig) fig.remove();
+        if (!$$(".shot", grid).length) section.remove();
+      });
+    });
+
+    const count = $("[data-photos-count]", section);
+    if (count) count.textContent = list.length + (list.length === 1 ? " photo" : " photos");
+  }
+
   /* ----------------------------------------------------------------- year */
   function wireYear() {
     $$("[data-year]").forEach((el) => { el.textContent = new Date().getFullYear(); });
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    // wireEvents() must run before wireReveal(): it injects the calendar,
-    // and an IntersectionObserver attached to a zero-height element never fires.
-    wireLinks(); wireNav(); wireEvents();
+    // wireEvents() and wirePhotos() must run before wireReveal(): they inject
+    // content, and an IntersectionObserver attached to a zero-height element
+    // never fires, which would leave the injected markup stuck at opacity 0.
+    wireLinks(); wireNav(); wireEvents(); wirePhotos();
     wireReveal(); wireSpine(); wireCounters(); wireHero(); wireYear();
   });
 })();

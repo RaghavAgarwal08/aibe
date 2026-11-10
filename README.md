@@ -16,8 +16,10 @@ css/aibe.css    Design system (all colors, type and layout tokens)
 js/aibe.js      Links config, nav, reveals, 3D hero, calendar rendering
 js/motion.js    Parallax, 3D tilt, word reveals, pinned scenes, decks
 js/events.js    THE CALENDAR DATA — the file you edit most often
+js/photos.js    THE PHOTO LIST — empty today; gallery hides itself until filled
 assets/         Logos generated from the brand sheet
 assets/art/     Generated SVG artwork (see section 9)
+assets/photos/  Real photos — shot list in its README
 ```
 
 ## 1. The five-minute edits
@@ -163,7 +165,41 @@ cd site && python3 -m http.server 8000
 
 Then open <http://localhost:8000>.
 
-## 9. Artwork and motion
+## 9. Photos
+
+There are no photographs on the site yet, because AIBE hasn't run an event
+yet. The system for them is built and waiting.
+
+**`js/photos.js`** holds the list. It is empty, and while it is empty the
+gallery section on the home page **removes itself on load** — no empty
+frames, no "coming soon" boxes, nothing that looks unfinished. Add one entry
+and the section appears, complete with its own entry in the side navigation.
+
+```js
+{ src: "assets/photos/quad-day.jpg",
+  alt: "Students stopping at the AIBE table on the Quad",
+  caption: "Quad Day",
+  wide: true }          // optional: spans two columns
+```
+
+Photos get the same treatment as everything else — staggered reveal, 3D tilt
+toward the cursor, a slow zoom on hover. A file that fails to load removes
+its own frame rather than showing a broken image.
+
+**`assets/photos/README.md` is the useful part**: a nine-shot list you can
+hand to whoever has a camera, saying what to photograph at each event, what
+makes each shot work, and where it lands on the site. It also covers file
+sizes, a one-line command to shrink phone photos, and getting permission
+before a face goes on a public website.
+
+### Replacing the abstract art
+
+Five places use generated SVG art that a real photo should eventually
+replace. Search the HTML for **`PHOTO SLOT`** — each is marked with a comment
+saying which file to drop in and what the shot should be. Slot A is the home
+page, B is Programs, C is About, D is Team, E is Sponsors.
+
+## 10. Artwork and motion
 
 ### The art
 
